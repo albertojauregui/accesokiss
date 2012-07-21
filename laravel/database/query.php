@@ -2,7 +2,8 @@
 
 use Closure;
 use Laravel\Database;
-use Laravel\Paginator;
+// use Laravel\Paginator;
+use Paginator;
 use Laravel\Database\Query\Grammars\SQLServer;
 
 class Query {
