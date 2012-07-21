@@ -36,5 +36,7 @@
 return array(
 
 	'docs' => array('handles' => 'docs'),
+	'bob',
+	'bootstrapper' => array('auto' => true),
 
 );
