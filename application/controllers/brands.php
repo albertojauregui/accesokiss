@@ -1,6 +1,6 @@
 <?php
 
-class Brand_Controller extends Base_Controller {
+class Brands_Controller extends Base_Controller {
 
 	public function action_index()
 	{

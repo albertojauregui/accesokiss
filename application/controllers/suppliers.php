@@ -1,6 +1,6 @@
 <?php
 
-class Supplier_Controller extends Base_Controller {
+class Suppliers_Controller extends Base_Controller {
 
 	public function action_index()
 	{
