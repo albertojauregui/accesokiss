@@ -4,7 +4,7 @@ class User_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-
+		return View::make('users.index');
 	}
 	
 	public function action_view()
