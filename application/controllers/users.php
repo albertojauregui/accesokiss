@@ -14,6 +14,7 @@ class Users_Controller extends Base_Controller {
 			'password' => Input::get('password'),
 		);
 		echo "<pre>";
+		print_r(Hash::make(Input::get('password')));
 		print_r($credentials);
 		if (Auth::attempt($credentials)){
 		    // return Redirect::to('/suppliers');
