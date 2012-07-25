@@ -17,9 +17,7 @@
 				{{ Form::label('password', 'Contraseña')}}
 				{{ Form::password('password') }}
 
-				{{ Form::submit('Logueate a tu cuenta', array(
-					'class' => 'btn btn-primary'
-				)) }}
+				{{ Form::submit('Logueate a tu cuenta', array('class' => 'btn btn-primary')) }}
 			{{ Form::close() }}
 		</div>
 	</div>
