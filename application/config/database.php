@@ -69,12 +69,13 @@ return array(
 
 		'mysql' => array(
 			'driver'   => 'mysql',
-			'host'     => '/tmp/mysql/accesokiss.sock',
+			'host'     => 'tunnel.pagodabox.com',
 			'database' => 'accesokiss',
 			'username' => 'neida',
 			'password' => 'IWuCR8mJ',
 			'charset'  => 'latin1',
 			'prefix'   => '',
+			'unix_socket' => '/tmp/mysql/accesokiss.sock'
 		),
 
 		'pgsql' => array(
