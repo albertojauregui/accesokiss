@@ -55,9 +55,26 @@ class Users_Controller extends Base_Controller {
 		}
 	}
 	
-	public function action_edit()
+	public function action_edit($id)
 	{
-		
+		if (Resquest::method() == 'GET'){
+			$user = User::find($id);
+			return View::make('users.edit', $user);
+		} elseif (Request::method() == 'POST'){
+			$user = User::find($id);
+			$user->username = Input::get('username');
+			$user->password = Input::get('password');
+			$user->is_admin = Input::get('is_admin');
+			if ($user->save()){
+				// Edición exitosa
+				Session::flash('status', 'Edición satisfactoria.');
+				return Redirect::to('/users');
+			} else {
+				// Edición fallida
+				Session::flash('status', 'Edición fallida.');
+				return Redirect::to('/users/edit/'.$id);
+			}
+		}
 	}
 	
 	public function action_delete()
