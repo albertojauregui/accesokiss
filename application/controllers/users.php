@@ -9,7 +9,6 @@ class Users_Controller extends Base_Controller {
 
 	public function action_login()
 	{
-		echo Hash::make(Input::get('password'));
 		$credentials = array(
 			'username' => Input::get('username'),
 			'password' => Input::get('password'),
