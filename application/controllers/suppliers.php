@@ -35,9 +35,27 @@ class Suppliers_Controller extends Base_Controller {
 		}
 	}
 	
-	public function action_edit()
+	public function action_edit($id)
 	{
-		
+		if (Resquest::method() == 'GET'){
+			$supplier = Supplier::find($id);
+			return View::make('suppliers.edit', $supplier);
+		} elseif (Request::method() == 'POST'){
+			$supplier = Supplier::find($id);
+			$supplier->name    = Input::get('name');
+			$supplier->url     = Input::get('url');
+			$supplier->address = Input::get('address');
+			$supplier->phone   = Input::get('phone');
+			if ($supplier->save()){
+				// Edición exitosa
+				Session::flash('status', 'Edición satisfactoria.');
+				return Redirect::to('/suppliers');
+			} else {
+				// Edición fallida
+				Session::flash('status', 'Edición fallida.');
+				return Redirect::to('/suppliers/edit/'.$id);
+			}
+		}
 	}
 	
 	public function action_delete()
