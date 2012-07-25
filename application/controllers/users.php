@@ -4,7 +4,7 @@ class Users_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		return View::make('users.index');
+		$this->layout->nest('content', 'users.index');
 	}
 	
 	public function action_view()
