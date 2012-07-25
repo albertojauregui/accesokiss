@@ -9,9 +9,19 @@ class Users_Controller extends Base_Controller {
 
 	public function action_login()
 	{
-		echo "<pre>";
-		print_r(Input::get());
-		echo "</pre>";
+		echo Hash::make(Input::get('password'));
+		$credentials = array(
+			'username' => Input::get('username'),
+			'password' => Input::get('password'),
+		);
+		if (Auth::attempt($credentials)){
+			if (Auth::check()){
+				echo "Logueado!";
+			}
+		    // return Redirect::to('/suppliers');
+		} else {
+		    // return Redirect::to('/');
+		}
 		return false;
 	}
 	
