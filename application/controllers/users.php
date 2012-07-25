@@ -6,6 +6,14 @@ class Users_Controller extends Base_Controller {
 	{
 		return View::make('users.index');
 	}
+
+	public function action_login()
+	{
+		echo "<pre>";
+		print_r(Input::get());
+		echo "</pre>";
+		return false;
+	}
 	
 	public function action_view()
 	{
