@@ -390,3 +390,11 @@ body {
 	border: 1px solid #CCC;
 	margin: 0 auto;
 }
+
+.login-box input {
+	padding: 10px 12px;
+}
+
+.login-box .btn-large {
+	display: block;
+}
