@@ -69,7 +69,7 @@ return array(
 
 		'mysql' => array(
 			'driver'   => 'mysql',
-			'host'     => 'tunnel.pagodabox.com:3306',
+			'host'     => '/tmp/mysql/accesokiss.sock',
 			'database' => 'accesokiss',
 			'username' => 'neida',
 			'password' => 'IWuCR8mJ',
