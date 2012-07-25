@@ -28,9 +28,10 @@ class Users_Controller extends Base_Controller {
 		return false;
 	}
 	
-	public function action_view()
+	public function action_view($id)
 	{
-		
+		$user = User::find($id);	
+		return View::make('users.view', $user);
 	}
 	
 	public function action_add()
