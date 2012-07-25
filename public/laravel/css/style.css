@@ -379,11 +379,14 @@ code
 
 /* Agregando estilos personalizados de la app */
 
-html {
-	background-image: url('/img/background.png') repeat;
+body {
+	background: url('/img/background.png');
 }
 
 .login-box {
-	width: 250px;
+	width: 220px;
+	padding: 12px;
+	background: white;
+	border: 1px solid #CCC;
 	margin: 0 auto;
 }
