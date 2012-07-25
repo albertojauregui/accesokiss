@@ -10,7 +10,7 @@
 		<div class="greeting">
 		</div>	
 		<div class="form-wrapper">
-			{{ Form::open('user/login', 'POST') }}
+			{{ Form::open('users/login', 'POST') }}
 				{{ Form::label('username', 'Usuario')}}
 				{{ Form::text('username') }}
 
