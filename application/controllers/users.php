@@ -9,24 +9,22 @@ class Users_Controller extends Base_Controller {
 
 	public function action_login()
 	{
-		$credentials = array(
-			'username' => Input::get('username'),
-			'password' => Input::get('password'),
-		);
-		echo "<pre>";
-		print_r(Hash::make('demo'));
-		print_r($credentials);
-		if (Auth::attempt($credentials)){
-		    // return Redirect::to('/suppliers');
-		} else {
-		    // return Redirect::to('/');
+		if (Request::method() == 'POST'){
+			$credentials = array(
+				'username' => Input::get('username'),
+				'password' => Input::get('password'),
+			);
+			if (Auth::attempt($credentials)){
+			    // return Redirect::to('/suppliers');
+			} else {
+			    // return Redirect::to('/');
+			}
+			if (Auth::check()){
+				echo "Logueado!";
+			} else {
+				echo ":(";
+			}
 		}
-		if (Auth::check()){
-			echo "Logueado!";
-		} else {
-			echo ":(";
-		}
-		echo "</pre>";
 		return false;
 	}
 	
@@ -37,7 +35,23 @@ class Users_Controller extends Base_Controller {
 	
 	public function action_add()
 	{
-		
+		if (Request::method() == 'GET'){
+			return View::make('users.add');
+		} elseif (Request::method() == 'POST') {
+			$user = new User;
+			$user->username = Input::get('username');
+			$user->password = Input::get('password');
+			$user->id_admin = Input::get('is_admin');
+			if ($user->save()){
+				// Guardado con éxito
+				Session::flash('status', 'Guardado satisfactorio.');
+				return Redirect::to('/users');
+			} else {
+				// Guardado fallido
+				Session::flash('status', 'Guardado fallido.');
+				return Redirect::to('/users/add');
+			}
+		}
 	}
 	
 	public function action_edit()
