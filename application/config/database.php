@@ -71,9 +71,9 @@ return array(
 			'driver'   => 'mysql',
 			'host'     => 'localhost',
 			'database' => 'database',
-			'username' => 'root',
-			'password' => '',
-			'charset'  => 'utf8',
+			'username' => 'neida',
+			'password' => 'IWuCR8mJ',
+			'charset'  => 'latin1',
 			'prefix'   => '',
 		),
 
