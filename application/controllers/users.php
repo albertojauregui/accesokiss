@@ -14,12 +14,14 @@ class Users_Controller extends Base_Controller {
 			'password' => Input::get('password'),
 		);
 		if (Auth::attempt($credentials)){
-			if (Auth::check()){
-				echo "Logueado!";
-			}
 		    // return Redirect::to('/suppliers');
 		} else {
 		    // return Redirect::to('/');
+		}
+		if (Auth::check()){
+			echo "Logueado!";
+		} else {
+			echo ":(";
 		}
 		return false;
 	}
