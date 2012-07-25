@@ -391,10 +391,10 @@ body {
 	margin: 0 auto;
 }
 
-.login-box input {
+.login-box .form-wrapper form input {
 	padding: 10px 12px;
 }
 
-.login-box .btn-large {
+.login-box .form-wrapper .btn.btn-large {
 	display: block;
 }
