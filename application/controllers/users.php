@@ -15,7 +15,6 @@ class Users_Controller extends Base_Controller {
 		);
 		echo "<pre>";
 		print_r($credentials);
-		echo "</pre>";
 		if (Auth::attempt($credentials)){
 		    // return Redirect::to('/suppliers');
 		} else {
@@ -26,6 +25,7 @@ class Users_Controller extends Base_Controller {
 		} else {
 			echo ":(";
 		}
+		echo "</pre>";
 		return false;
 	}
 	
