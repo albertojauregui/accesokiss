@@ -376,3 +376,10 @@ code
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
 }
+
+/* Agregando estilos personalizados de la app */
+
+html {
+	background-image: -webkit-radial-gradient(50% 50%, ellipse closest-side, rgba(255, 255, 255, 0) 1%, rgba(0, 42, 88, 0.15) 100%);
+	background-image: -moz-radial-gradient(50% 50%, ellipse closest-side, rgba(255, 255, 255, 0) 1%, rgba(0, 42, 88, 0.15) 100%);
+}
