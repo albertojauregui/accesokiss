@@ -41,7 +41,7 @@ class Users_Controller extends Base_Controller {
 		} elseif (Request::method() == 'POST') {
 			$user = new User;
 			$user->username = Input::get('username');
-			$user->password = Input::get('password');
+			$user->password = Hash::make(Input::get('password'));
 			$user->id_admin = Input::get('is_admin');
 			if ($user->save()){
 				// Guardado con éxito
