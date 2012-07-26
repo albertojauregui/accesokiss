@@ -384,11 +384,9 @@ body {
 }
 
 .login-box {
-	width: 220px;
 	padding: 12px;
 	background: white;
 	border: 1px solid #CCC;
-	margin: 0 auto;
 }
 
 .login-box .form-wrapper form input {
