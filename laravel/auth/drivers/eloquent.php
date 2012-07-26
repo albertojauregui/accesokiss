@@ -30,15 +30,13 @@ class Eloquent extends Driver {
 
 		$user = $this->model()->where($username, '=', $arguments['username'])->first();
 
-
-		print_r($user);
-
 		// This driver uses a basic username and password authentication scheme
 		// so if the credentials match what is in the database we will just
 		// log the user into the application and remember them if asked.
 		$password = $arguments['password'];
 
-		if ( ! is_null($user) and Hash::check($password, $user->password))
+		// if ( ! is_null($user) and Hash::check($password, $user->password))
+		if ( ! is_null($user) and ($password == $user->password))
 		{
 			return $this->login($user->id, array_get($arguments, 'remember'));
 		}
