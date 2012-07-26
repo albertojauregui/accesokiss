@@ -10,11 +10,15 @@
 			<div class="title">
 				<h1>Acceso KISS</h1>
 			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4 offset4 white-box">
 			<div class="login-box">
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="greeting">
-							<h2><small>Bienvenido</small></h2>
+							<h3>Bienvenido</h3>
 						</div>	
 						<div class="form-wrapper">
 							{{ Form::open('/users/login', 'POST', array('class' => 'form-horizontal')) }}
