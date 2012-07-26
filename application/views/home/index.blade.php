@@ -20,7 +20,7 @@
 									{{ Form::text('username', null, array('class' => 'span12')) }}
 
 									{{ Form::label('password', 'Contraseña') }}
-									{{ Form::password('password', null, array('class' => 'span12')) }}
+									{{ Form::password('password', array('class' => 'span12')) }}
 
 									{{ Form::submit('Logueate a tu cuenta', array('class' => 'btn-primary btn-large span12')) }}
 								</fieldset>
