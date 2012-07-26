@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-	<div class="suppliers-add container-box">
+	<div class="suppliers-add">
 		<div class="page-header">
 			<h1>.: Agrega un proveedor</h1>
 		</div>

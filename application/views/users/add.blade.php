@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-	<div class="users-add container-box">
+	<div class="users-add">
 		<div class="page-header">
 			<h1>.: Agrega un usuario</h1>
 		</div>

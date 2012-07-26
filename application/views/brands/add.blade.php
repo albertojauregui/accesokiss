@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-	<div class="brands-add container-box">
+	<div class="brands-add">
 		<div class="page-header">
 			<h1>.: Agrega una marca</h1>
 		</div>
