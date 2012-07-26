@@ -29,7 +29,11 @@
 								</div>
 							</div>
 
-							{{ Form::submit('Logueate a tu cuenta', array('class' => 'btn-primary btn-large')) }}
+							<div class="row">
+								<div class="span4">
+									{{ Form::submit('Logueate a tu cuenta', array('class' => 'btn-primary btn-large')) }}
+								</div>
+							</div>
 						</fieldset>
 					{{ Form::close() }}
 				</div>
