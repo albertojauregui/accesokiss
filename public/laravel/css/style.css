@@ -390,7 +390,7 @@ body {
 }
 
 .login-box .form-wrapper form input {
-	padding: 10px 12px;
+	height: 56px;
 }
 
 .login-box .form-wrapper .btn.btn-large {
