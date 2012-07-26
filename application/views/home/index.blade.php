@@ -22,9 +22,7 @@
 										{{ Form::label('password', 'Contraseña') }}
 										{{ Form::password('password') }}
 
-										<div class="row">
-											{{ Form::submit('Logueate a tu cuenta', array('class' => 'btn-primary btn-large span4')) }}
-										</div>
+										{{ Form::submit('Logueate a tu cuenta', array('class' => 'btn-primary btn-large span12')) }}
 								</fieldset>
 							{{ Form::close() }}
 						</div>
