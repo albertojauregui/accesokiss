@@ -28,7 +28,7 @@
 						<i class="icon-user icon-white"></i>
 						Usuarios
 					</a>
-					<a href="/users/logout" class = "btn btn-large btn-inverse">
+					<a href="/users/logout" class = "btn btn-large btn-danger">
 						<i class="icon-remove icon-white"></i>
 						Salir
 					</a>
