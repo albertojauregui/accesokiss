@@ -14,7 +14,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="greeting">
-							<h2>Bienvenido</h2>
+							<h2><small>Bienvenido</small></h2>
 						</div>	
 						<div class="form-wrapper">
 							{{ Form::open('/users/login', 'POST', array('class' => 'form-horizontal')) }}
