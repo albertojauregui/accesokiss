@@ -394,5 +394,5 @@ body {
 }
 
 .login-box .form-wrapper .btn.btn-large {
-	display: block;
+	margin-left: 0;
 }
