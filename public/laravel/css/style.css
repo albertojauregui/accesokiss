@@ -388,6 +388,20 @@ body {
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.53);
 }
 
+a:visited.btn,
+a.btn {
+	color: white;
+}
+
+.menu {
+	margin-bottom: 20px;
+	box-shadow: 0 2px 7px rgba(0, 0, 0, 0.27);
+}
+
+.menu.btn-group .btn.btn-large {
+	width: 22.5%;
+}
+
 .title h1 {
 	text-align: center;
 	margin-bottom: 50px;
