@@ -383,20 +383,36 @@ body {
 	background: url('/img/background.png');
 }
 
+.btn.btn-large {
+	font-weight: bold;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.53);
+}
+
 .title h1 {
 	text-align: center;
 	margin-bottom: 50px;
+	text-shadow: 0 1px 1px white;
 }
 
-.login-box {
-	padding: 4px;
+.white-box {
+	padding: 8px;
 	background: white;
 	border: 1px solid #AAA;
 	border-radius: 6px;
 	box-shadow: 0 2px 7px rgba(0, 0, 0, 0.27);
+	background-image: -webkit-linear-gradient(white, #F6F1F1);
+	background-image: -moz-linear-gradient(white, #F6F1F1);
+	background-image: -o-linear-gradient(white, #F6F1F1);
+	background-image: -ms-linear-gradient(white, #F6F1F1);
+	background-image: linear-gradient(white, #F6F1F1);
 }
 
-.login-box .greeting h2 {
+.login-box {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.login-box .greeting h3 {
 	text-align: center;
 	margin: 10px 0;
 }
