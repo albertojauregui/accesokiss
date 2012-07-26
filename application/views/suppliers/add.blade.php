@@ -9,7 +9,7 @@
 		<div class="page-header">
 			<h1>.: Agrega un proveedor</h1>
 		</div>
-		<div class="row">
+		<div class="row-fluid">
 			<div class="span4 offset4">
 				<div class="form-wrapper">
 					{{ Form::open('/suppliers/add', 'POST') }}
