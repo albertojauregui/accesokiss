@@ -383,14 +383,26 @@ body {
 	background: url('/img/background.png');
 }
 
+.title h1 {
+	text-align: center;
+}
+
 .login-box {
 	padding: 4px;
 	background: white;
 	border: 1px solid #CCC;
+	border-radius:4px;
+}
+
+.login-box .greeting h2 {
+	text-align: center;
 }
 
 .login-box .form-wrapper form input {
-	height: 48px;
+	height: 40px;
+	margin-bottom: 14px;
+	font-weight: bold;
+	font-size: 18px;
 }
 
 .login-box .form-wrapper .btn.btn-large {
