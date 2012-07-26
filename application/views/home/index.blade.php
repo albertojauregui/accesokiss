@@ -7,11 +7,14 @@
 @section('content')
 	<div class="row">
 		<div class="span4 offset4">
+			<div class="title">
+				<h1>Acceso KISS</h1>
+			</div>
 			<div class="login-box">
 				<div class="row-fluid">
 					<div class="span12">
 						<div class="greeting">
-							<legend>Acceso KISS</legend>
+							<h2>Bienvenido</h2>
 						</div>	
 						<div class="form-wrapper">
 							{{ Form::open('/users/login', 'POST', array('class' => 'form-horizontal')) }}
