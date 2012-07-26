@@ -15,25 +15,15 @@
 				<div class="form-wrapper">
 					{{ Form::open('/users/login', 'POST', array('class' => 'form-horizontal')) }}
 						<fieldset>
-							<div class="control-group">
-								{{ Form::label('username', 'Usuario', array('class' => 'control-label'))}}
-								<div class="controls">
-									{{ Form::text('username') }}
-								</div>
-							</div>
+								{{ Form::label('username', 'Usuario') }}
+								{{ Form::text('username') }}
 
-							<div class="control-group">
-								{{ Form::label('password', 'Contraseña', array('class' => 'control-label'))}}
-								<div class="controls">
-									{{ Form::password('password') }}
-								</div>
-							</div>
+								{{ Form::label('password', 'Contraseña') }}
+								{{ Form::password('password') }}
 
-							<div class="row">
-								<div class="span4">
+								<div class="row">
 									{{ Form::submit('Logueate a tu cuenta', array('class' => 'btn-primary btn-large')) }}
 								</div>
-							</div>
 						</fieldset>
 					{{ Form::close() }}
 				</div>
