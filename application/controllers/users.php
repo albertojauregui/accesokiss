@@ -15,17 +15,13 @@ class Users_Controller extends Base_Controller {
 				'password' => Input::get('password'),
 			);
 			if (Auth::attempt($credentials)){
-			    // return Redirect::to('/suppliers');
+			    return Redirect::to('/suppliers');
 			} else {
-			    // return Redirect::to('/');
+			    return Redirect::to('/');
 			}
-			if (Auth::check()){
-				echo "Logueado!";
-			} else {
-				echo ":(";
-			}
+		} else {
+			return Redirect::to('/');
 		}
-		return false;
 	}
 	
 	public function action_view($id)
