@@ -13,7 +13,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="span4 offset4 white-box">
+		<div class="span4 offset4 container-box">
 			<div class="login-box">
 				<div class="row-fluid">
 					<div class="span12">
