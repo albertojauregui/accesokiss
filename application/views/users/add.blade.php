@@ -22,7 +22,7 @@
 						{{ Form::label('is_admin', '¿Es admin?')}}
 						{{ Form::checkbox('is_admin', 1) }}
 
-						{{ Form::submit('Agrega el Proveedor', array('class' => 'btn-primary btn-large')) }}
+						{{ Form::submit('Agrega el Usuario', array('class' => 'btn-primary btn-large')) }}
 					{{ Form::close() }}
 				</div>
 			</div>	
