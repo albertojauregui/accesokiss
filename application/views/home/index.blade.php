@@ -16,10 +16,10 @@
 						{{ Form::open('/users/login', 'POST', array('class' => 'form-horizontal')) }}
 							<fieldset>
 									{{ Form::label('username', 'Usuario') }}
-									{{ Form::text('username', array('class' => 'span4')) }}
+									{{ Form::text('username', '', array('class' => 'span4')) }}
 
 									{{ Form::label('password', 'Contraseña') }}
-									{{ Form::password('password', array('class' => 'span4')) }}
+									{{ Form::password('password', '', array('class' => 'span4')) }}
 
 									<div class="row">
 										{{ Form::submit('Logueate a tu cuenta', array('class' => 'btn-primary btn-large span4')) }}
