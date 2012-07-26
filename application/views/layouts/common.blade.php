@@ -37,7 +37,17 @@
 		</div>
 	</div>
 	<div class="container">
-		@yield('content')
+		<div class="row">
+			<div class="span12">
+				<div class="container-box">
+					<div class="row-fluid">
+						<div class="span12">
+							@yield('content')
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
