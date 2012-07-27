@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-	{{ $brands }}
 	{{--Modal para agregar marcas--}}
 	<div class="modal fade hide" id="brand-add">
 		<div class="form-wrapper">
@@ -60,26 +59,29 @@
 							</div>
 						</div>
 					</div>
-					<div class="list-element">
-						<div class="row-fluid">
-							<div class = "span6">
-								HP Printer
-							</div>
-							<div class = "span6">
-								<a href = "#" class = "btn btn-primary" rel = "tooltip" title = "Mostrar proveedores">
-									<i class="icon-tags icon-white"></i>
-									<span class="caret"></span>
-								</a>
-								<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar la marca">
-									<i class="icon-pencil icon-white"></i>
-								</a>
-								<a href = "#" class = "btn btn-danger" rel = "tooltip" title = "Eliminar la marca">
-									<i class="icon-remove icon-white"></i>
-								</a>
+					@forelse ($brands as $brand)
+						<div class="list-element">
+							<div class="row-fluid">
+								<div class = "span6">
+									{{ $brand->name }}
+								</div>
+								<div class = "span6">
+									<a href = "#" class = "btn btn-primary" rel = "tooltip" title = "Mostrar proveedores">
+										<i class="icon-tags icon-white"></i>
+										<span class="caret"></span>
+									</a>
+									<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar la marca">
+										<i class="icon-pencil icon-white"></i>
+									</a>
+									<a href = "#" class = "btn btn-danger" rel = "tooltip" title = "Eliminar la marca">
+										<i class="icon-remove icon-white"></i>
+									</a>
+								</div>
 							</div>
 						</div>
-					</div>
-					<hr>
+						<hr>
+					@empty
+					@endforelse
 					<div class="list-element">
 					</div>
 				</div>
