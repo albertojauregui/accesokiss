@@ -49,15 +49,15 @@
 								</a>
 							</div>
 							<div class="span2">
-								<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el acceso">
-									<i class="icon-pencil icon-white"></i>
+								<a href = "#" class = "btn btn-primary" rel = "tooltip" title = "Mostrar marcas">
+									<i class="icon-tags icon-white"></i>
+									<span class="caret"></span>
 								</a>
 								<a href = "#" class = "btn btn-info" rel = "tooltip" title = "Más detalles">
 									<i class="icon-info-sign icon-white"></i>
 								</a>
-								<a href = "#" class = "btn btn-primary" rel = "tooltip" title = "Mostrar marcas">
-									<i class="icon-tags icon-white"></i>
-									<span class="caret"></span>
+								<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el acceso">
+									<i class="icon-pencil icon-white"></i>
 								</a>
 							</div>
 						</div>
