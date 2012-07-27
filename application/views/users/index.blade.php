@@ -14,30 +14,35 @@
 				    <h3>.: Agrega un usuario</h3>
 				</div>
 				<div class="modal-body">
-					<fieldset>
-						<div class="control-group">
-							{{ Form::label('name', 'Nombre de Usuario', array('class' => 'control-label'))}}
-							<div class="controls">
-								{{ Form::text('name') }}
-							</div>
-						</div>
+					<div class="row-fluid">
+						<div class="span1">&nbsp;</div>	
+						<div class="span10">
+							<fieldset>
+								<div class="control-group">
+									{{ Form::label('name', 'Nombre de Usuario', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('name') }}
+									</div>
+								</div>
 
-						<div class="control-group">
-							{{ Form::label('password', 'Contraseña', array('class' => 'control-label'))}}
-							<div class="controls">
-								{{ Form::text('password') }}
-							</div>
-						</div>
+								<div class="control-group">
+									{{ Form::label('password', 'Contraseña', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('password') }}
+									</div>
+								</div>
 
-						<div class="control-group">
-							{{ Form::label('is_admin', '¿Es admin?', array('class' => 'control-label'))}}
-							<div class="controls">
-								<label class="checkbox">
-									{{ Form::checkbox('is_admin', 1) }}
-								</label>
-							</div>
+								<div class="control-group">
+									{{ Form::label('is_admin', '¿Es admin?', array('class' => 'control-label'))}}
+									<div class="controls">
+										<label class="checkbox">
+											{{ Form::checkbox('is_admin', 1) }}
+										</label>
+									</div>
+								</div>
+							</fieldset>
 						</div>
-					</fieldset>
+					</div>
 				</div>
 				<div class="modal-footer">
 				    <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
