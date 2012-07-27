@@ -86,33 +86,34 @@
 							</div>
 						</div>
 					</div>
-					<div class="list-element">
-						<div class="row-fluid">
-							<div class="span3">
-								Radio antenas del Cariba S.A. de C.V.
-							</div>
-							<div class="span3">
-								http://www.mongeeks.com.mx
-							</div>
-							<div class="span2">
-								Av. Lombardo Soberano #18 Catapulta 3
-							</div>
-							<div class="span2">
-								9985772496
-							</div>
-							<div class="span2">
-								<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el proveedor">
-									<i class="icon-pencil icon-white"></i>
-								</a>
-								<a href = "#" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el proveedor">
-									<i class="icon-remove icon-white"></i>
-								</a>
+					@forelse ($suppliers as $supplier)
+						<div class="list-element">
+							<div class="row-fluid">
+								<div class="span3">
+									{{ $supplier->name }}
+								</div>
+								<div class="span3">
+									{{ $supplier->url }}
+								</div>
+								<div class="span2">
+									{{ $supplier->address }}
+								</div>
+								<div class="span2">
+									{{ $supplier->phone }}
+								</div>
+								<div class="span2">
+									<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el proveedor">
+										<i class="icon-pencil icon-white"></i>
+									</a>
+									<a href = "#" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el proveedor">
+										<i class="icon-remove icon-white"></i>
+									</a>
+								</div>
 							</div>
 						</div>
-					</div>
-					<hr>
-					<div class="list-element">
-					</div>
+						<hr>
+					@empty
+					@endforelse
 				</div>
 			</div>
 		</div>

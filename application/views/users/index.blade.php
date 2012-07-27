@@ -81,32 +81,39 @@
 							</div>
 						</div>
 					</div>
-					<div class="list-element">
-						<div class="row-fluid">
-							<div class="span3">
-								Chuy1782
-							</div>
-							<div class="span3">
-								tetolilomandamas78000
-							</div>
-							<div class="span3">
-								<a href = "#" class = "btn btn-success">
-									<i class="icon-ok icon-white"></i>
-								</a>
-							</div>
-							<div class="span3">
-								<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el usuario">
-									<i class="icon-pencil icon-white"></i>
-								</a>
-								<a href = "#" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el usuario">
-									<i class="icon-remove icon-white"></i>
-								</a>
+					@forelse ($users as $user)
+						<div class="list-element">
+							<div class="row-fluid">
+								<div class="span3">
+									{{ $user->username }}
+								</div>
+								<div class="span3">
+									{{ $user->password }}
+								</div>
+								<div class="span3">
+									@if ($user->is_admin)
+										<a href = "#" class = "btn btn-success">
+											<i class="icon-ok icon-white"></i>
+										</a>
+									@else
+										<a href = "#" class = "btn btn-danger">
+											<i class="icon-remove icon-white"></i>
+										</a>
+									@endif
+								</div>
+								<div class="span3">
+									<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el usuario">
+										<i class="icon-pencil icon-white"></i>
+									</a>
+									<a href = "#" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el usuario">
+										<i class="icon-remove icon-white"></i>
+									</a>
+								</div>
 							</div>
 						</div>
-					</div>
-					<hr>
-					<div class="list-element">
-					</div>
+						<hr>
+					@empty
+					@endforelse
 				</div>
 			</div>
 		</div>

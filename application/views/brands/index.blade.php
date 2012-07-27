@@ -82,8 +82,6 @@
 						<hr>
 					@empty
 					@endforelse
-					<div class="list-element">
-					</div>
 				</div>
 			</div>
 		</div>
