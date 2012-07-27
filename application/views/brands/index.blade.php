@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+	{{ brands }}
 	{{--Modal para agregar marcas--}}
 	<div class="modal fade hide" id="brand-add">
 		<div class="form-wrapper">
