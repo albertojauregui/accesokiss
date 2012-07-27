@@ -5,7 +5,9 @@ class Brands_Controller extends Base_Controller {
 	public function action_index()
 	{
 		$brands = Brand::all();
-		return View::make('brands.index', $brands);
+		return View::make('brands.index', array(
+			'brands' => $brands
+		));
 	}
 	
 	public function action_view($id)
