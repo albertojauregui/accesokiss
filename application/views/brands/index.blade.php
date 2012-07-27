@@ -5,9 +5,40 @@
 @endsection
 
 @section('content')
+	{{--Modal para agregar marcas--}}
+	<div class="modal fade hide" id="brand-add">
+		<div class="form-wrapper">
+			{{ Form::open('/brands/add', 'POST', array('class' => 'form-horizontal')) }}
+				<div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal">×</button>
+				    <h3>.: Agrega una marca</h3>
+				</div>
+				<div class="modal-body">
+					<div class="row-fluid">
+						<div class="span1">&nbsp;</div>	
+						<div class="span10">
+							<fieldset>
+								<div class="control-group">
+									{{ Form::label('name', 'Nombre', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('name') }}
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+				    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+					{{ Form::submit('Agrega la marca', array('class' => 'btn-primary')) }}
+				</div>
+			{{ Form::close() }}
+		</div>
+	</div>
+	{{--Markup del index de marcas--}}
 	<div class="brands-index">
 		<div class = "module-actions">
-			<a href = "/brands/add" class = "btn btn-large btn-primary pull-right">
+			<a href = "#brand-add" class = "btn btn-large btn-primary pull-right" data-toggle = "modal">
 				<i class="icon-plus icon-white"></i>
 				Agregar Marca 
 			</a>
