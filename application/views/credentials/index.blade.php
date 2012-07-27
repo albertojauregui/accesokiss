@@ -5,17 +5,11 @@
 @endsection
 
 @section('content')
-	<div class="suppliers-index">
-		<div class = "module-actions">
-			<a href = "/suppliers/add" class = "btn btn-large btn-primary pull-right">
-				<i class="icon-plus icon-white"></i>
-				Agregar Proveedor
-			</a>
-		</div>
+	<div class="credentials-index">
 		<div class="page-header">
-			<h1>.: Proveedores</h1>
+			<h1>.: Accesos a los Proveedores</h1>
 		</div>
-		<div class="suppliers-list">
+		<div class="credentials-list">
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="list-header">
@@ -24,13 +18,13 @@
 								Nombre
 							</div>
 							<div class="span3">
-								Página Web
+								Usuario
 							</div>
 							<div class="span2">
-								Dirección
+								Contraseña
 							</div>
 							<div class="span2">
-								Teléfono
+								Sitio Web
 							</div>
 							<div class="span2">
 								Acciones
@@ -40,23 +34,30 @@
 					<div class="list-element">
 						<div class="row-fluid">
 							<div class="span3">
-								Radio antenas del Cariba S.A. de C.V.
+								Radio Antes del Caribe S.A. de C.V.
 							</div>
 							<div class="span3">
-								http://www.mongeeks.com.mx
+								PedroPablo2000
 							</div>
 							<div class="span2">
-								Av. Lombardo Soberano #18 Catapulta 3
+								ticotaco6000
 							</div>
 							<div class="span2">
-								9985772496
+								<a href = "http://www.mongeeks.com.mx" class = "btn btn-primary visitar-proveedor" target = "_blank">
+									<i class="icon-share icon-white"></i>
+									Visitar
+								</a>
 							</div>
 							<div class="span2">
-								<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el proveedor">
+								<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el acceso">
 									<i class="icon-pencil icon-white"></i>
 								</a>
-								<a href = "#" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el proveedor">
-									<i class="icon-remove icon-white"></i>
+								<a href = "#" class = "btn btn-info" rel = "tooltip" title = "Más detalles">
+									<i class="icon-info-sign icon-white"></i>
+								</a>
+								<a href = "#" class = "btn btn-primary" rel = "tooltip" title = "Mostrar marcas">
+									<i class="icon-tags icon-white"></i>
+									<span class="caret"></span>
 								</a>
 							</div>
 						</div>
