@@ -6,7 +6,7 @@
 
 @section('content')
 	{{--Modal para agregar usuarios--}}
-	<div class="modal fade hide" id="myModal">
+	<div class="modal fade hide" id="user-add">
 		<div class="form-wrapper">
 			{{ Form::open('/users/add', 'POST', array('class' => 'form-horizontal')) }}
 				<div class="modal-header">
@@ -45,7 +45,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-				    <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+				    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
 					{{ Form::submit('Agrega el Usuario', array('class' => 'btn-primary')) }}
 				</div>
 			{{ Form::close() }}
@@ -54,7 +54,7 @@
 	{{--Markup del index de usuarios--}}
 	<div class="users-index">
 		<div class = "module-actions">
-			<a href = "#myModal" class = "btn btn-large btn-primary pull-right" data-toggle="modal">
+			<a href = "#user-add" class = "btn btn-large btn-primary pull-right" data-toggle="modal">
 				<i class="icon-plus icon-white"></i>
 				Agregar un Usuario
 			</a>
