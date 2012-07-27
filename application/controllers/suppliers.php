@@ -4,7 +4,10 @@ class Suppliers_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		return View::make('suppliers.index');
+		$suppliers = Supplier::all();
+		return View::make('suppliers.index', array(
+			'suppliers' => $suppliers
+		));
 	}
 	
 	public function action_view($id)
