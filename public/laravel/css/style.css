@@ -452,6 +452,10 @@ a.btn {
 	font-weight: bold;
 }
 
+.list-element {
+	text-align: center;
+}
+
 .btn.visitar-proveedor {
 	display: block;
 }
