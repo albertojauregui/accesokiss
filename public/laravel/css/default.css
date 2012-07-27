@@ -1,0 +1,86 @@
+/* Agregando estilos personalizados de la app */
+
+body {
+	background: url('/img/background.png');
+}
+
+form {
+	margin: 0;
+}
+
+.btn.btn-large {
+	font-weight: bold;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.53);
+}
+
+a:visited.btn,
+a.btn {
+	color: white;
+}
+
+.menu {
+	margin-bottom: 20px;
+	box-shadow: 0 2px 7px rgba(0, 0, 0, 0.27);
+}
+
+.menu.btn-group .btn.btn-large {
+	width: 19%;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.title h1 {
+	text-align: center;
+	margin-bottom: 50px;
+	text-shadow: 0 1px 1px white;
+}
+
+.container-box {
+	padding: 8px;
+	background: white;
+	border: 1px solid #AAA;
+	border-radius: 6px;
+	box-shadow: 0 2px 7px rgba(0, 0, 0, 0.27);
+	background-image: -webkit-linear-gradient(white, #F6F1F1);
+	background-image: -moz-linear-gradient(white, #F6F1F1);
+	background-image: -o-linear-gradient(white, #F6F1F1);
+	background-image: -ms-linear-gradient(white, #F6F1F1);
+	background-image: linear-gradient(white, #F6F1F1);
+}
+
+.login-box {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.login-box .greeting h3 {
+	text-align: center;
+	margin: 10px 0;
+}
+
+.login-box .form-wrapper form input {
+	height: 40px;
+	margin-bottom: 20px;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.login-box .form-wrapper .btn.btn-large {
+	margin-left: 0;
+}
+
+.suppliers-index {
+}
+
+.list-header {
+	text-align: center;
+	font-weight: bold;
+}
+
+.list-element {
+	text-align: center;
+}
+
+.btn.visitar-proveedor {
+	display: block;
+}
