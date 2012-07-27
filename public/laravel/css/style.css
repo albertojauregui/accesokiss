@@ -447,7 +447,11 @@ a.btn {
 .suppliers-index {
 }
 
-.suppliers-index .list-header {
+.list-header {
 	text-align: center;
 	font-weight: bold;
+}
+
+.btn.visitar-proveedor {
+	display: block;
 }
