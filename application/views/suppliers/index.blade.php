@@ -5,9 +5,58 @@
 @endsection
 
 @section('content')
+	{{--Modal para agregar proveedores--}}
+	<div class="modal fade hide" id="supplier-add">
+		<div class="form-wrapper">
+			{{ Form::open('/suppliers/add', 'POST', array('class' => 'form-horizontal')) }}
+				<div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal">×</button>
+				    <h3>.: Agrega un proveedor</h3>
+				</div>
+				<div class="modal-body">
+					<div class="row-fluid">
+						<div class="span1">&nbsp;</div>	
+						<div class="span10">
+							<fieldset>
+								<div class="control-group">
+									{{ Form::label('name', 'Nombre del Proveedor', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('name') }}
+									</div>
+								</div>
+								<div class="control-group">
+									{{ Form::label('url', 'Sitio Web', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('name') }}
+									</div>
+								</div>
+								<div class="control-group">
+									{{ Form::label('address', 'Dirección', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('name') }}
+									</div>
+								</div>
+								<div class="control-group">
+									{{ Form::label('phone', 'Teléfono', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('name') }}
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+				    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+					{{ Form::submit('Agrega el Proveedor', array('class' => 'btn-primary')) }}
+				</div>
+			{{ Form::close() }}
+		</div>
+	</div>
+	{{--Markup del index de proveedores--}}
 	<div class="suppliers-index">
 		<div class = "module-actions">
-			<a href = "/suppliers/add" class = "btn btn-large btn-primary pull-right">
+			<a href = "#supplier-add" class = "btn btn-large btn-primary pull-right" data-toggle = "modal">
 				<i class="icon-plus icon-white"></i>
 				Agregar Proveedor
 			</a>
