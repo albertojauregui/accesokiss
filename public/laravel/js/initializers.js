@@ -17,6 +17,11 @@ $(function (){
 			$(this).val('');
 		});
 	});
+
+	$('.slide-related').click(function (event){
+		event.preventDefault();
+		slideContent($(this), '.list-element', '.related-container');
+	});
 	
 });
 
@@ -27,4 +32,10 @@ function resizeMenu(selectorMenu, selectorMenuItems){
 	$.each($(selectorMenuItems), function(){
 		$(this).css('width', size);
 	});
+}
+
+function slideContent(element, parentSelector, contentSelector){
+	var $parent = element.parents(parentSelector);
+	var $son    = $parent.find(contentSelector);
+	$son.slideToggle();
 }
