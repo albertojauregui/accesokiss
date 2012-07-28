@@ -61,8 +61,23 @@ class Brands_Controller extends Base_Controller {
 	public function action_delete($id)
 	{
 		$brand = Brand::find($id);
-		$brand->suppliers()->delete();
-		$brand->delete();
+		if ($brand){
+			if ($brand->suppliers()->delete()){
+				if ($brand->delete()){
+					return Redirect::to('/brands')
+						->with('status', 'Eliminación de Marca exitoso.');
+				} else {
+					return Redirect::to('/brands')
+						->with('status', 'Eliminación de Marca fallido.');
+				}
+			} else {
+				return Redirect::to('/brands')
+					->with('status', 'Borrado de proveedores fallido.');
+			}
+		} else {
+			return Redirect::to('/brands')
+				->with('status', 'Marca no encontrada');
+		}
 	}
 	
 }
