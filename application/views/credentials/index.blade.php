@@ -36,6 +36,7 @@
 										{{ Form::select('supplier') }}
 									</div>
 								</div>
+								{{ Form::hidden('user_id', Auth::user()->id) }}
 							</fieldset>
 						</div>
 					</div>
