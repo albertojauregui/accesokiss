@@ -85,7 +85,7 @@
 									{{ $brand->name }}
 								</div>
 								<div class = "span6">
-									<a href = "#" class = "btn btn-primary" rel = "tooltip" title = "Mostrar proveedores">
+									<a href = "#" class = "btn btn-primary slide-related" rel = "tooltip" title = "Mostrar proveedores">
 										<i class="icon-tags icon-white"></i>
 										<span class="caret"></span>
 									</a>
@@ -97,7 +97,7 @@
 									</a>
 								</div>
 							</div>
-							<div class="row-fluid hide">
+							<div class="row-fluid hide related-container">
 								<h3>Proveedores de la Marca</h3>
 								@forelse ($brand->suppliers as $supplier)
 									<div class="span3">
