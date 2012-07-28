@@ -4,9 +4,11 @@ class Brands_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		$brands = Brand::all();
+		$brands = Brand::with('suppliers')->get();
+		$suppliers = Supplier::all();
 		return View::make('brands.index', array(
-			'brands' => $brands
+			'brands' => $brands,
+			'suppliers' => $suppliers,
 		));
 	}
 	
@@ -25,6 +27,7 @@ class Brands_Controller extends Base_Controller {
 			$brand->name = Input::get('name');
 			if ($brand->save()){
 				// Guardado con éxito
+				$brand->suppliers()->sync(Input::get('suppliers'));
 				Session::flash('status', 'Guardado satisfactorio.');
 				return Redirect::to('/brands');
 			} else {

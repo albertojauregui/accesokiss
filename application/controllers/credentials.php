@@ -4,7 +4,8 @@ class Credentials_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		return View::make('credentials.index');
+		$data = Supplier::with('brands')->get();
+		return View::make('credentials.index', array('credentials' => $data));
 	}
 	
 	public function action_view($id)

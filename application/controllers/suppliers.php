@@ -4,9 +4,11 @@ class Suppliers_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		$suppliers = Supplier::all();
+		$suppliers = Supplier::with('brands')->get();
+		$brands = Brand::all();
 		return View::make('suppliers.index', array(
-			'suppliers' => $suppliers
+			'suppliers' => $suppliers,
+			'brands' => $brands,
 		));
 	}
 	
@@ -28,6 +30,7 @@ class Suppliers_Controller extends Base_Controller {
 			$supplier->phone   = Input::get('phone');
 			if ($supplier->save()){
 				// Guardado con éxito
+				$supplier->brands()->sync(Input::get('brands'));
 				Session::flash('status', 'Guardado satisfactorio.');
 				return Redirect::to('/suppliers');
 			} else {
