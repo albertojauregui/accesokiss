@@ -27,19 +27,19 @@
 								<div class="control-group">
 									{{ Form::label('url', 'Sitio Web', array('class' => 'control-label'))}}
 									<div class="controls">
-										{{ Form::text('name') }}
+										{{ Form::text('url') }}
 									</div>
 								</div>
 								<div class="control-group">
 									{{ Form::label('address', 'Dirección', array('class' => 'control-label'))}}
 									<div class="controls">
-										{{ Form::text('name') }}
+										{{ Form::text('address') }}
 									</div>
 								</div>
 								<div class="control-group">
 									{{ Form::label('phone', 'Teléfono', array('class' => 'control-label'))}}
 									<div class="controls">
-										{{ Form::text('name') }}
+										{{ Form::text('phone') }}
 									</div>
 								</div>
 							</fieldset>
