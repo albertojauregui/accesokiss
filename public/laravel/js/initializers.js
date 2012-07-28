@@ -18,6 +18,19 @@ $(function (){
 		});
 	});
 
+	$('.modal-credentials').on('show', function(){
+		$.ajax({
+			type: "GET",
+			url: "/suppliers"
+		}).done(function( data ) {
+			var html = '';
+			$.each(data, function(key, supplier){
+				html += '<option value = "'+supplier.id+'">'+supplier.name+'</option>';
+			});
+			$('#supplier').html(html);
+		});
+	});
+
 	$('.slide-related').click(function (event){
 		event.preventDefault();
 		slideContent($(this), '.list-element', '.related-container');
