@@ -31,12 +31,12 @@ class Suppliers_Controller extends Base_Controller {
 			if ($supplier->save()){
 				// Guardado con éxito
 				$supplier->brands()->sync(Input::get('brands'));
-				Session::flash('status', 'Guardado satisfactorio.');
-				return Redirect::to('/suppliers');
+				return Redirect::to('/suppliers')
+					->with('status', 'Guardado exitoso.');
 			} else {
 				// Guardado fallido
-				Session::flash('status', 'Guardado fallido.');
-				return Redirect::to('/suppliers/add');
+				return Redirect::to('/suppliers/add')
+					->with('status', 'Guardado fallido.');
 			}
 		}
 	}
@@ -54,12 +54,12 @@ class Suppliers_Controller extends Base_Controller {
 			$supplier->phone   = Input::get('phone');
 			if ($supplier->save()){
 				// Edición exitosa
-				Session::flash('status', 'Edición satisfactoria.');
-				return Redirect::to('/suppliers');
+				return Redirect::to('/suppliers')
+					->with('status', 'Edición exitosa.');
 			} else {
 				// Edición fallida
-				Session::flash('status', 'Edición fallida.');
-				return Redirect::to('/suppliers/edit/'.$id);
+				return Redirect::to('/suppliers/edit/'.$id)
+					->with('status', 'Edición fallida.');
 			}
 		}
 	}

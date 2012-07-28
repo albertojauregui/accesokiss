@@ -20,10 +20,12 @@ class Users_Controller extends Base_Controller {
 			if (Auth::attempt($credentials)){
 			    return Redirect::to('/suppliers');
 			} else {
-			    return Redirect::to('/');
+			    return Redirect::to('/')
+					->with('status', 'Logueo fallido.');
 			}
 		} else {
-			return Redirect::to('/');
+			return Redirect::to('/')
+				->with('status', 'Acceso incorrecto.');
 		}
 	}
 	

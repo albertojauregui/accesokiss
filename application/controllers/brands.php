@@ -28,12 +28,12 @@ class Brands_Controller extends Base_Controller {
 			if ($brand->save()){
 				// Guardado con éxito
 				$brand->suppliers()->sync(Input::get('suppliers'));
-				Session::flash('status', 'Guardado satisfactorio.');
-				return Redirect::to('/brands');
+				return Redirect::to('/brands')
+					->with('status', 'Guardado satisfactorio.');
 			} else {
 				// Guardado fallido
-				Session::flash('status', 'Guardado fallido.');
-				return Redirect::to('/brands/add');
+				return Redirect::to('/brands/add')
+					->with('status', 'Guardado fallido.');
 			}
 		}
 	}
@@ -48,12 +48,12 @@ class Brands_Controller extends Base_Controller {
 			$brand->name = Input::get('name');
 			if ($brand->save()){
 				// Edición exitosa
-				Session::flash('status', 'Edición satisfactoria.');
-				return Redirect::to('/brands');
+				return Redirect::to('/brands')
+					->with('status', 'Edición satisfactoria.');
 			} else {
 				// Edición fallida
-				Session::flash('status', 'Edición fallida.');
-				return Redirect::to('/brands/edit/'.$id);
+				return Redirect::to('/brands/edit/'.$id)
+					->with('status', 'Edición fallida.');
 			}
 		}
 	}
