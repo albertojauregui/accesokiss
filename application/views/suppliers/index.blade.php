@@ -124,7 +124,7 @@
 									<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el proveedor">
 										<i class="icon-pencil icon-white"></i>
 									</a>
-									<a href = "#" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el proveedor">
+									<a href = "/suppliers/delete/{{ $supplier->id }}" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el proveedor">
 										<i class="icon-remove icon-white"></i>
 									</a>
 								</div>
