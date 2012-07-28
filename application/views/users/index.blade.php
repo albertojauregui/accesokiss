@@ -108,7 +108,7 @@
 									<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el usuario">
 										<i class="icon-pencil icon-white"></i>
 									</a>
-									<a href = "#" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el usuario">
+									<a href = "/users/delete/{{ $user->id }}" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el usuario">
 										<i class="icon-remove icon-white"></i>
 									</a>
 								</div>
