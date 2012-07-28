@@ -27,6 +27,25 @@
 							</fieldset>
 						</div>
 					</div>
+					<div class="row-fluid">
+						<div class="suppliers">
+							<h3>Proveedores</h3>
+							<div class="suppliers-list">
+								@forelse ($suppliers as $supplier)
+									<div class="span1">
+										{{ Form::checkbox('suppliers[]', $supplier->id) }}
+									</div>
+									<div class="span3">
+										{{ $supplier->name }}
+									</div>
+								@empty
+									<div class="alert alert-danger">
+										No existen proveedores
+									</div>
+								@endforelse
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer">
 				    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
@@ -77,6 +96,18 @@
 										<i class="icon-remove icon-white"></i>
 									</a>
 								</div>
+							</div>
+							<div class="row-fluid hide">
+								<h3>Proveedores de la Marca</h3>
+								@forelse ($brand->suppliers as $supplier)
+									<div class="span3">
+										{{ $supplier->name }}
+									</div>
+								@empty
+									<div class="alert alert-error">
+										No encontramos ningún proveedor para esta marca
+									</div>
+								@endforelse
 							</div>
 						</div>
 						<hr>

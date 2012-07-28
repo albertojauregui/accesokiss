@@ -19,9 +19,9 @@
 						<div class="span10">
 							<fieldset>
 								<div class="control-group">
-									{{ Form::label('name', 'Nombre de Usuario', array('class' => 'control-label'))}}
+									{{ Form::label('username', 'Nombre de Usuario', array('class' => 'control-label'))}}
 									<div class="controls">
-										{{ Form::text('name') }}
+										{{ Form::text('username') }}
 									</div>
 								</div>
 
@@ -102,6 +102,9 @@
 									@endif
 								</div>
 								<div class="span3">
+									<a href = "#" class = "btn btn-primary" rel = "tooltip" title = "Manejar accesos">
+										<i class="icon-lock icon-white"></i>
+									</a>
 									<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el usuario">
 										<i class="icon-pencil icon-white"></i>
 									</a>

@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+	<?php echo "<pre>"; print_r($credentials); echo "</pre>"; ?>
 	<div class="credentials-index">
 		<div class="page-header">
 			<h1>.: Accesos a los Proveedores</h1>
