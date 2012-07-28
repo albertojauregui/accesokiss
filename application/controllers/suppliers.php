@@ -64,9 +64,11 @@ class Suppliers_Controller extends Base_Controller {
 		}
 	}
 	
-	public function action_delete()
+	public function action_delete($id)
 	{
-		
+		$supplier = Supplier::find($id);
+		$supplier->brands()->delete();
+		$supplier->delete();
 	}
 	
 }
