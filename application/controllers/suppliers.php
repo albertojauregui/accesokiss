@@ -4,12 +4,16 @@ class Suppliers_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		$suppliers = Supplier::with('brands')->get();
-		$brands = Brand::all();
-		return View::make('suppliers.index', array(
-			'suppliers' => $suppliers,
-			'brands' => $brands,
-		));
+		if (Request::ajax()){
+			return Response::eloquent(Supplier::all());
+		} else {
+			$suppliers = Supplier::with('brands')->get();
+			$brands = Brand::all();
+			return View::make('suppliers.index', array(
+				'suppliers' => $suppliers,
+				'brands' => $brands,
+			));
+		}
 	}
 	
 	public function action_view($id)
