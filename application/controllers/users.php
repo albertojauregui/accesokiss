@@ -76,8 +76,11 @@ class Users_Controller extends Base_Controller {
 		}
 	}
 	
-	public function action_delete()
+	public function action_delete($id)
 	{
+		$user = User::find($id);
+		$user->suppliers()->delete();
+		$user->delete();
 	}
 
 	public function action_logout()
