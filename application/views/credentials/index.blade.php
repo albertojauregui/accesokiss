@@ -6,7 +6,7 @@
 
 @section('content')
 	{{--Modal para agregar proveedores--}}
-	<div class="modal fade hide" id="credential-add">
+	<div class="modal fade hide modal-credentials" id="credential-add">
 		<div class="form-wrapper">
 			{{ Form::open('/credentials/add', 'POST', array('class' => 'form-horizontal')) }}
 				<div class="modal-header">
@@ -33,7 +33,7 @@
 								<div class="control-group">
 									{{ Form::label('supplier', 'Proveedor', array('class' => 'control-label'))}}
 									<div class="controls">
-										{{ Form::select('supplier') }}
+										{{ Form::select('supplier', array('0' => 'Cargando Proveedores...')) }}
 									</div>
 								</div>
 								{{ Form::hidden('user_id', Auth::user()->id) }}
