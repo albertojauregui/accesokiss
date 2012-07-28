@@ -5,8 +5,56 @@
 @endsection
 
 @section('content')
-	<?php echo "<pre>"; print_r($credentials); echo "</pre>"; ?>
+	{{--Modal para agregar proveedores--}}
+	<div class="modal fade hide" id="credential-add">
+		<div class="form-wrapper">
+			{{ Form::open('/credentials/add', 'POST', array('class' => 'form-horizontal')) }}
+				<div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal">×</button>
+				    <h3>.: Agrega un acceso</h3>
+				</div>
+				<div class="modal-body">
+					<div class="row-fluid">
+						<div class="span1">&nbsp;</div>	
+						<div class="span10">
+							<fieldset>
+								<div class="control-group">
+									{{ Form::label('user', 'Nombre del Usuario', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('user') }}
+									</div>
+								</div>
+								<div class="control-group">
+									{{ Form::label('password', 'Contraseña', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('password') }}
+									</div>
+								</div>
+								<div class="control-group">
+									{{ Form::label('supplier', 'Proveedor', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::select('supplier') }}
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+				    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+					{{ Form::submit('Agrega el acceso', array('class' => 'btn-primary')) }}
+				</div>
+			{{ Form::close() }}
+		</div>
+	</div>
+	{{--Markup del index de proveedores--}}
 	<div class="credentials-index">
+		<div class = "module-actions">
+			<a href = "#credential-add" class = "btn btn-large btn-primary pull-right" data-toggle = "modal">
+				<i class="icon-plus icon-white"></i>
+				Agregar Acceso
+			</a>
+		</div>
 		<div class="page-header">
 			<h1>.: Accesos a los Proveedores</h1>
 		</div>
