@@ -58,9 +58,15 @@ class Brands_Controller extends Base_Controller {
 		}
 	}
 	
-	public function action_delete()
+	public function action_delete($id)
 	{
-		
+		echo "<pre>";
+		print_r($id);
+		$brand = Brand::find($id);
+		print_r($brand);
+		$brand->suppliers()->delete();
+		$brand->delete();
+		echo "</pre>";
 	}
 	
 }
