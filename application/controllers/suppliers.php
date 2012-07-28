@@ -66,9 +66,26 @@ class Suppliers_Controller extends Base_Controller {
 	
 	public function action_delete($id)
 	{
-		$supplier = Supplier::find($id);
-		$supplier->brands()->delete();
-		$supplier->delete();
+		$suppliers = Supplier::find($id);
+		if ($supplier){
+			if (    $supplier->brands()->delete() 
+				and $supplier->users()->delete())
+			{
+				if ($supplier->delete()){
+					return Redirect::to('/suppliers')
+						->with('status', 'Eliminación de proveedor exitoso.');
+				} else {
+					return Redirect::to('/suppliers')
+						->with('status', 'Eliminación de proveedor fallido.');
+				}
+			} else {
+				return Redirect::to('/suppliers')
+					->with('status', 'Borrado de accesos y marcas fallido.');
+			}
+		} else {
+			return Redirect::to('/suppliers')
+				->with('status', 'Proveedor no encontrado');
+		}
 	}
 	
 }
