@@ -19,19 +19,17 @@ class Credentials_Controller extends Base_Controller {
 		if (Request::method() == 'GET'){
 			return View::make('suppliers.add');
 		} elseif (Request::method() == 'POST') {
-			$supplier = new Supplier;
-			$supplier->name    = Input::get('name');
-			$supplier->url     = Input::get('url');
-			$supplier->address = Input::get('address');
-			$supplier->phone   = Input::get('phone');
-			if ($supplier->save()){
+			$user = User::find(Input::get('user_id'));
+			$user->suppliers->pivot->user = Input::get('user');
+			$user->suppliers->pivot->password = Input::get('password');
+			if ($user->suppliers->pivot->save()){
 				// Guardado con éxito
-				Session::flash('status', 'Guardado satisfactorio.');
-				return Redirect::to('/suppliers');
+				return Redirect::to('/suppliers')
+					->with('status', 'Guardado exitoso.');
 			} else {
 				// Guardado fallido
-				Session::flash('status', 'Guardado fallido.');
-				return Redirect::to('/suppliers/add');
+				return Redirect::to('/suppliers/add')
+					->with('status', 'Guardado fallido.');
 			}
 		}
 	}
