@@ -9,6 +9,7 @@
 		{{ HTML::style('laravel/css/style.css') }}
 		{{ Asset::container('bootstrapper')->styles() }}
 		{{ Asset::container('bootstrapper')->scripts() }}
+		{{ HTML::style('laravel/css/default.css') }}
 		{{ HTML::script('laravel/js/initializers.js') }}
 	@yield_section
 </head>

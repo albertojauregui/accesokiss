@@ -4,7 +4,10 @@ class Users_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		return View::make('users.index');
+		$users = User::all();
+		return View::make('users.index', array(
+			'users' => $users
+		));
 	}
 
 	public function action_login()
