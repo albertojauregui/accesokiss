@@ -79,8 +79,23 @@ class Users_Controller extends Base_Controller {
 	public function action_delete($id)
 	{
 		$user = User::find($id);
-		$user->suppliers()->delete();
-		$user->delete();
+		if ($user){
+			if ($user->suppliers()->delete()){
+				if ($user->delete()){
+					return Redirect::to('/users')
+						->with('status', 'Eliminación de usuario exitoso.');
+				} else {
+					return Redirect::to('/users')
+						->with('status', 'Eliminación de usuario fallido.');
+				}
+			} else {
+				return Redirect::to('/users')
+					->with('status', 'Borrado de accesos fallido.');
+			}
+		} else {
+			return Redirect::to('/users')
+				->with('status', 'Usuario no encontrado');
+		}
 	}
 
 	public function action_logout()
