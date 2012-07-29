@@ -43,7 +43,7 @@ class Suppliers_Controller extends Base_Controller {
 					)));
 			} else {
 				// Guardado fallido
-				return Redirect::to('/suppliers/add')
+				return Redirect::to('/suppliers')
 					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado fallido',
 						'type' => 'danger',
 					)));

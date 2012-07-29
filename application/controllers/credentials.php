@@ -20,17 +20,19 @@ class Credentials_Controller extends Base_Controller {
 			return View::make('suppliers.add');
 		} elseif (Request::method() == 'POST') {
 			$user = User::find(Input::get('user_id'));
-			$user->suppliers->pivot->user = Input::get('user');
-			$user->suppliers->pivot->password = Input::get('password');
-			if ($user->suppliers->pivot->save()){
+			if ($user->suppliers()->attach(Input::get('supplier'), array(
+				'user' => Input::get('user'),
+				'password' => Input::get('password'),
+			)))
+			{
 				// Guardado con éxito
-				return Redirect::to('/suppliers')
+				return Redirect::to('/credentials')
 					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado exitoso',
 						'type' => 'success',
 					)));
 			} else {
 				// Guardado fallido
-				return Redirect::to('/suppliers/add')
+				return Redirect::to('/credentials')
 					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado fallido',
 						'type' => 'danger',
 					)));

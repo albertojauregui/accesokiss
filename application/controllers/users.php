@@ -18,14 +18,18 @@ class Users_Controller extends Base_Controller {
 				'password' => Input::get('password'),
 			);
 			if (Auth::attempt($credentials)){
-			    return Redirect::to('/suppliers');
+			    return Redirect::to('/credentials');
 			} else {
 			    return Redirect::to('/')
-					->with('status', 'Logueo fallido.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Logueo fallido',
+						'type' => 'danger',
+					)));
 			}
 		} else {
 			return Redirect::to('/')
-				->with('status', 'Acceso incorrecto.');
+				->with('status', View::make('partials.fancy-status', array('message' => 'Acceso restringido',
+					'type' => 'danger',
+				)));
 		}
 	}
 	
@@ -46,12 +50,18 @@ class Users_Controller extends Base_Controller {
 			$user->is_admin = Input::get('is_admin');
 			if ($user->save()){
 				// Guardado con éxito
-				Session::flash('status', 'Guardado satisfactorio.');
-				return Redirect::to('/users');
+				return Redirect::to('/users')
+					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado exitoso',
+						'type' => 'success',
+					)));
+
 			} else {
 				// Guardado fallido
-				Session::flash('status', 'Guardado fallido.');
-				return Redirect::to('/users/add');
+				return Redirect::to('/users')
+					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado fallido',
+						'type' => 'danger',
+					)));
+
 			}
 		}
 	}
@@ -68,12 +78,18 @@ class Users_Controller extends Base_Controller {
 			$user->is_admin = Input::get('is_admin');
 			if ($user->save()){
 				// Edición exitosa
-				Session::flash('status', 'Edición satisfactoria.');
-				return Redirect::to('/users');
+				return Redirect::to('/users')
+					->with('status', View::make('partials.fancy-status', array('message' => 'Edición exitosa',
+						'type' => 'success',
+					)));
+	
 			} else {
 				// Edición fallida
-				Session::flash('status', 'Edición fallida.');
 				return Redirect::to('/users/edit/'.$id);
+					->with('status', View::make('partials.fancy-status', array('message' => 'Edición fallida',
+						'type' => 'success',
+					)));
+
 			}
 		}
 	}
@@ -85,18 +101,29 @@ class Users_Controller extends Base_Controller {
 			if ($user->suppliers()->delete()){
 				if ($user->delete()){
 					return Redirect::to('/users')
-						->with('status', 'Eliminación de usuario exitoso.');
+						->with('status', View::make('partials.fancy-status', 
+							array(
+								'message' => 'Eliminación exitosa',
+								'type' => 'success',
+							)
+						));
 				} else {
 					return Redirect::to('/users')
-						->with('status', 'Eliminación de usuario fallido.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación fallida',
+						'type' => 'danger',
+					)));
 				}
 			} else {
 				return Redirect::to('/users')
-					->with('status', 'Borrado de accesos fallido.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Borrado de accesos fallido',
+						'type' => 'danger',
+					)));
 			}
 		} else {
 			return Redirect::to('/users')
-				->with('status', 'Usuario no encontrado');
+				->with('status', View::make('partials.fancy-status', array('message' => 'Usuario no encontrado',
+					'type' => 'danger',
+				)));
 		}
 	}
 

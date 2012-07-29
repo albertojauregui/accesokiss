@@ -36,7 +36,7 @@ class Brands_Controller extends Base_Controller {
 					)));
 			} else {
 				// Guardado fallido
-				return Redirect::to('/brands/add')
+				return Redirect::to('/brands')
 					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado fallido',
 						'type' => 'danger',
 					)));
