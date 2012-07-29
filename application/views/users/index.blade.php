@@ -102,7 +102,7 @@
 									@endif
 								</div>
 								<div class="span3">
-									<a href = "#" class = "btn btn-primary" rel = "tooltip" title = "Manejar accesos">
+									<a href = "/users/credentials/{{ $user->id }}" class = "btn btn-primary" rel = "tooltip" title = "Manejar accesos">
 										<i class="icon-lock icon-white"></i>
 									</a>
 									<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el usuario">
