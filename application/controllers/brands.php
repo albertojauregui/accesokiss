@@ -27,13 +27,19 @@ class Brands_Controller extends Base_Controller {
 			$brand->name = Input::get('name');
 			if ($brand->save()){
 				// Guardado con éxito
-				$brand->suppliers()->sync(Input::get('suppliers'));
+				if (Input::get('suppliers')){
+					$brand->suppliers()->sync(Input::get('suppliers'));
+				}
 				return Redirect::to('/brands')
-					->with('status', 'Guardado satisfactorio.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado exitoso',
+						'type' => 'success',
+					)));
 			} else {
 				// Guardado fallido
 				return Redirect::to('/brands/add')
-					->with('status', 'Guardado fallido.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado fallido',
+						'type' => 'danger',
+					)));
 			}
 		}
 	}
@@ -49,11 +55,15 @@ class Brands_Controller extends Base_Controller {
 			if ($brand->save()){
 				// Edición exitosa
 				return Redirect::to('/brands')
-					->with('status', 'Edición satisfactoria.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Edición exitosa',
+						'type' => 'success',
+					)));
 			} else {
 				// Edición fallida
 				return Redirect::to('/brands/edit/'.$id)
-					->with('status', 'Edición fallida.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Edición fallido',
+						'type' => 'danger',
+					)));
 			}
 		}
 	}
@@ -65,18 +75,26 @@ class Brands_Controller extends Base_Controller {
 			if ($brand->suppliers()->delete()){
 				if ($brand->delete()){
 					return Redirect::to('/brands')
-						->with('status', 'Eliminación de Marca exitoso.');
+						->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación exitosa',
+							'type' => 'success',
+						)));
 				} else {
 					return Redirect::to('/brands')
-						->with('status', 'Eliminación de Marca fallido.');
+						->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación fallida',
+							'type' => 'danger',
+						)));
 				}
 			} else {
 				return Redirect::to('/brands')
-					->with('status', 'Borrado de proveedores fallido.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Borrado de proveedores fallido',
+						'type' => 'danger',
+					)));
 			}
 		} else {
 			return Redirect::to('/brands')
-				->with('status', 'Marca no encontrada');
+				->with('status', View::make('partials.fancy-status', array('message' => 'Marca no encontrada',
+					'type' => 'danger',
+				)));
 		}
 	}
 	

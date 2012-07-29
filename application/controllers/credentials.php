@@ -25,11 +25,15 @@ class Credentials_Controller extends Base_Controller {
 			if ($user->suppliers->pivot->save()){
 				// Guardado con éxito
 				return Redirect::to('/suppliers')
-					->with('status', 'Guardado exitoso.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado exitoso',
+						'type' => 'success',
+					)));
 			} else {
 				// Guardado fallido
 				return Redirect::to('/suppliers/add')
-					->with('status', 'Guardado fallido.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado fallido',
+						'type' => 'danger',
+					)));
 			}
 		}
 	}

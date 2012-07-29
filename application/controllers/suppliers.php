@@ -34,13 +34,19 @@ class Suppliers_Controller extends Base_Controller {
 			$supplier->phone   = Input::get('phone');
 			if ($supplier->save()){
 				// Guardado con éxito
-				$supplier->brands()->sync(Input::get('brands'));
+				if (Input::get('brands')){
+					$supplier->brands()->sync(Input::get('brands'));
+				}
 				return Redirect::to('/suppliers')
-					->with('status', 'Guardado exitoso.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado exitoso',
+						'type' => 'success',
+					)));
 			} else {
 				// Guardado fallido
 				return Redirect::to('/suppliers/add')
-					->with('status', 'Guardado fallido.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado fallido',
+						'type' => 'danger',
+					)));
 			}
 		}
 	}
@@ -59,11 +65,15 @@ class Suppliers_Controller extends Base_Controller {
 			if ($supplier->save()){
 				// Edición exitosa
 				return Redirect::to('/suppliers')
-					->with('status', 'Edición exitosa.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Edición exitosa',
+						'type' => 'success',
+					)));
 			} else {
 				// Edición fallida
 				return Redirect::to('/suppliers/edit/'.$id)
-					->with('status', 'Edición fallida.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Edición fallida',
+						'type' => 'danger',
+					)));
 			}
 		}
 	}
@@ -77,18 +87,26 @@ class Suppliers_Controller extends Base_Controller {
 			{
 				if ($supplier->delete()){
 					return Redirect::to('/suppliers')
-						->with('status', 'Eliminación de proveedor exitoso.');
+						->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación exitosa',
+							'type' => 'success',
+						)));
 				} else {
 					return Redirect::to('/suppliers')
-						->with('status', 'Eliminación de proveedor fallido.');
+						->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación fallida',
+							'type' => 'danger',
+						)));
 				}
 			} else {
 				return Redirect::to('/suppliers')
-					->with('status', 'Borrado de accesos y marcas fallido.');
+					->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación de accesos y marcas fallida',
+						'type' => 'danger',
+					)));
 			}
 		} else {
 			return Redirect::to('/suppliers')
-				->with('status', 'Proveedor no encontrado');
+				->with('status', View::make('partials.fancy-status', array('message' => 'Proveedor no encontrado',
+					'type' => 'danger',
+				)));
 		}
 	}
 	
