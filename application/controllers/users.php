@@ -18,7 +18,7 @@ class Users_Controller extends Base_Controller {
 				'password' => Input::get('password'),
 			);
 			if (Auth::attempt($credentials)){
-			    return Redirect::to('/credentials');
+			    return Redirect::to('/credentials/index/' . Auth::user()->id);
 			} else {
 			    return Redirect::to('/')
 					->with('status', View::make('partials.fancy-status', array('message' => 'Logueo fallido',
