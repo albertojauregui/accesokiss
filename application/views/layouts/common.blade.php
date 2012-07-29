@@ -46,6 +46,13 @@
 		<div class="row">
 			<div class="span12">
 				<div class="container-box">
+					@if (Session::get('status'))
+					<div class="row-fluid">
+						<div class="span12">
+							{{ Session::get('status') }}
+						</div>
+					</div>
+					@endif
 					<div class="row-fluid">
 						<div class="span12">
 							@yield('content')
