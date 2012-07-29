@@ -36,7 +36,7 @@
 										{{ Form::select('supplier', array('0' => 'Cargando Proveedores...')) }}
 									</div>
 								</div>
-								{{ Form::hidden('user_id', Auth::user()->id) }}
+								{{ Form::hidden('user_id', $user_id) }}
 							</fieldset>
 						</div>
 					</div>
@@ -81,40 +81,56 @@
 							</div>
 						</div>
 					</div>
-					<div class="list-element">
-						<div class="row-fluid">
-							<div class="span3">
-								Radio Antes del Caribe S.A. de C.V.
+					@forelse ($credentials[0]->suppliers as $supplier)
+						<div class="list-element">
+							<div class="row-fluid">
+								<div class="span3">
+									{{ $supplier->name }}
+									<a href = "#" class = "btn btn-info" rel = "tooltip" title = "{{ $supplier->address }} - {{ $supplier->phone }}">
+										<i class="icon-info-sign icon-white"></i>
+									</a>
+								</div>
+								<div class="span3">
+									{{ $supplier->pivot->user }}
+								</div>
+								<div class="span2">
+									{{ $supplier->pivot->password }}
+								</div>
+								<div class="span2">
+									<a href = "{{ $supplier->url }}" class = "btn btn-primary visitar-proveedor" target = "_blank">
+										<i class="icon-share icon-white"></i>
+										Visitar
+									</a>
+								</div>
+								<div class="span2">
+									<a href = "#" class = "btn btn-primary slide-related" rel = "tooltip" title = "Mostrar marcas">
+										<i class="icon-tags icon-white"></i>
+										<span class="caret"></span>
+									</a>
+									<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el acceso">
+										<i class="icon-pencil icon-white"></i>
+									</a>
+									<a href = "/credentials/delete/{{ $credentials[0]->id }}/{{ $supplier->pivot->id }}" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el acceso">
+										<i class="icon-remove icon-white"></i>
+									</a>
+								</div>
 							</div>
-							<div class="span3">
-								PedroPablo2000
-							</div>
-							<div class="span2">
-								ticotaco6000
-							</div>
-							<div class="span2">
-								<a href = "http://www.mongeeks.com.mx" class = "btn btn-primary visitar-proveedor" target = "_blank">
-									<i class="icon-share icon-white"></i>
-									Visitar
-								</a>
-							</div>
-							<div class="span2">
-								<a href = "#" class = "btn btn-primary" rel = "tooltip" title = "Mostrar marcas">
-									<i class="icon-tags icon-white"></i>
-									<span class="caret"></span>
-								</a>
-								<a href = "#" class = "btn btn-info" rel = "tooltip" title = "Más detalles">
-									<i class="icon-info-sign icon-white"></i>
-								</a>
-								<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el acceso">
-									<i class="icon-pencil icon-white"></i>
-								</a>
+							<div class="row-fluid hide related-container">
+								<h3>Marcas del Proveedor</h3>
+								@forelse ($supplier->brands as $brand)
+									<div class="span3">
+										{{ $brand->name }}
+									</div>
+								@empty
+									<div class="alert alert-error">
+										No encontramos ninguna marca para el proveedor
+									</div>
+								@endforelse
 							</div>
 						</div>
-					</div>
-					<hr>
-					<div class="list-element">
-					</div>
+						<hr>
+					@empty
+					@endforelse
 				</div>
 			</div>
 		</div>
