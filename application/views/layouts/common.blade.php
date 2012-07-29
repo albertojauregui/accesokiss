@@ -18,7 +18,7 @@
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="btn-group menu">
-					<a href="/credentials" class = "btn btn-large btn-inverse">
+					<a href="/credentials/index/{{ Auth::user()->id }}" class = "btn btn-large btn-inverse">
 						<i class="icon-lock icon-white"></i>
 						Accesos
 					</a>
