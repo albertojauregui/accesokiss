@@ -85,7 +85,7 @@ class Users_Controller extends Base_Controller {
 	
 			} else {
 				// Edición fallida
-				return Redirect::to('/users/edit/'.$id);
+				return Redirect::to('/users/edit/'.$id)
 					->with('status', View::make('partials.fancy-status', array('message' => 'Edición fallida',
 						'type' => 'success',
 					)));
@@ -125,6 +125,16 @@ class Users_Controller extends Base_Controller {
 					'type' => 'danger',
 				)));
 		}
+	}
+
+	public function action_credentials($user_id){
+		$data = User::with(array('suppliers', 'suppliers.brands'))
+			->where('id', '=', $user_id)
+			->get();
+		return View::make('credentials.index', array(
+			'credentials' => $data,
+			'user_id' => $user_id,
+		));
 	}
 
 	public function action_logout()
