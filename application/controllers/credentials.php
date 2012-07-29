@@ -2,10 +2,15 @@
 
 class Credentials_Controller extends Base_Controller {
 
-	public function action_index()
+	public function action_index($user_id)
 	{
-		$data = Supplier::with('brands')->get();
-		return View::make('credentials.index', array('credentials' => $data));
+		$data = User::with(array('suppliers', 'suppliers.brands'))
+			->where('id', '=', Auth::user()->id)
+			->get();
+		return View::make('credentials.index', array(
+			'credentials' => $data,
+			'user_id' => $user_id,
+		));
 	}
 	
 	public function action_view($id)
@@ -63,9 +68,19 @@ class Credentials_Controller extends Base_Controller {
 		}
 	}
 	
-	public function action_delete()
+	public function action_delete($user_id, $pivot_id)
 	{
-		
+		if (User::find($user_id)->suppliers()->pivot()->where('id', '=', $pivot_id)->delete()){
+			return Redirect::to('/credentials')
+				->with('status', View::make('partials.fancy-status', array('message' => 'Borrado de acceso exitoso',
+					'type' => 'success',
+				)));
+		} else {
+			return Redirect::to('/credentials')
+				->with('status', View::make('partials.fancy-status', array('message' => 'Borrado de acceso fallido',
+					'type' => 'danger',
+				)));
+		}
 	}
 	
 }
