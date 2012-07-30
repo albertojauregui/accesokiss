@@ -54,6 +54,55 @@
 			{{ Form::close() }}
 		</div>
 	</div>
+	{{--Modal para editar marcas--}}
+	<div class="modal fade hide" id="brand-edit">
+		<div class="form-wrapper">
+			{{ Form::open('/brands/edit/', 'POST', array('class' => 'form-horizontal')) }}
+				<div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal">×</button>
+				    <h3>.: Edita la marca</h3>
+				</div>
+				<div class="modal-body">
+					<div class="row-fluid">
+						<div class="span1">&nbsp;</div>	
+						<div class="span10">
+							<fieldset>
+								<div class="control-group">
+									{{ Form::label('name', 'Nombre', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('name') }}
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="suppliers">
+							<h3>Proveedores</h3>
+							<div class="suppliers-list">
+								@forelse ($suppliers as $supplier)
+									<div class="span1">
+										{{ Form::checkbox('suppliers[]', $supplier->id) }}
+									</div>
+									<div class="span3">
+										{{ $supplier->name }}
+									</div>
+								@empty
+									<div class="alert alert-danger">
+										No existen proveedores
+									</div>
+								@endforelse
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+				    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+					{{ Form::submit('Edita la marca', array('class' => 'btn-primary')) }}
+				</div>
+			{{ Form::close() }}
+		</div>
+	</div>
 	{{--Markup del index de marcas--}}
 	<div class="brands-index">
 		<div class = "module-actions">
@@ -89,7 +138,7 @@
 										<i class="icon-tags icon-white"></i>
 										<span class="caret"></span>
 									</a>
-									<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar la marca">
+									<a href = "#" class = "btn btn-warning brand-edit" rel = "tooltip" title = "Editar la marca" id = "brand-edit-{{ $brand->id }}">
 										<i class="icon-pencil icon-white"></i>
 									</a>
 									<a href = "/brands/delete/{{ $brand->id }}" class = "btn btn-danger" rel = "tooltip" title = "Eliminar la marca">
