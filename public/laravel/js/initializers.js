@@ -74,6 +74,24 @@ $(function (){
 		});
 	});
 	
+	$('.user-edit').click(function(){
+		var attr_id = $(this).attr('id');
+		var values = attr_id.split('-');
+		var id = values[2];
+		$.ajax({
+			type: "GET",
+			url: "/users/edit/" + id
+		}).done(function( data ) {
+			var user = data[0];
+			$('#user-edit .form-horizontal')
+				.attr('action', '/suppliers/edit/'+user.id);
+			$('#user-edit #username'). val(user.name);
+			$('#user-edit #password'). val(user.password);
+			$('#user-edit #is_admin'). val(user.is_admin);
+			$('#user-edit').modal('show');
+		});
+	});
+	
 });
 
 function resizeMenu(selectorMenu, selectorMenuItems){
