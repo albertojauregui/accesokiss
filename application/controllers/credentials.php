@@ -45,25 +45,30 @@ class Credentials_Controller extends Base_Controller {
 		}
 	}
 	
-	public function action_edit($id)
+	public function action_edit($user_id, $pivot_id)
 	{
-		if (Resquest::method() == 'GET'){
-			$supplier = Supplier::find($id);
-			return View::make('suppliers.edit', $supplier);
-		} elseif (Request::method() == 'POST'){
-			$supplier = Supplier::find($id);
-			$supplier->name    = Input::get('name');
-			$supplier->url     = Input::get('url');
-			$supplier->address = Input::get('address');
-			$supplier->phone   = Input::get('phone');
-			if ($supplier->save()){
-				// Edición exitosa
-				Session::flash('status', 'Edición satisfactoria.');
-				return Redirect::to('/suppliers');
+		if (Request::method() == 'GET'){
+			if (Request::ajax()){
+				return Response::eloquent(User::find($user_id)->suppliers()->pivot()->where('id', '=', $pivot_id)->get());
+			}
+		} elseif (Request::method() == 'POST') {
+			$user = User::find(Input::get('user_id'));
+			if ($user->suppliers()->attach(Input::get('supplier'), array(
+				'user' => Input::get('user'),
+				'password' => Input::get('password'),
+			)))
+			{
+				// Guardado con éxito
+				return Redirect::to('/credentials')
+					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado exitoso',
+						'type' => 'success',
+					)));
 			} else {
-				// Edición fallida
-				Session::flash('status', 'Edición fallida.');
-				return Redirect::to('/suppliers/edit/'.$id);
+				// Guardado fallido
+				return Redirect::to('/credentials')
+					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado fallido',
+						'type' => 'danger',
+					)));
 			}
 		}
 	}
