@@ -35,6 +35,44 @@ $(function (){
 		event.preventDefault();
 		slideContent($(this), '.list-element', '.related-container');
 	});
+
+	$('.brand-edit').click(function(){
+		var attr_id = $(this).attr('id');
+		var values = attr_id.split('-');
+		var id = values[2];
+		$.ajax({
+			type: "GET",
+			url: "/brands/edit/" + id
+		}).done(function( data ) {
+			var brand = data[0];
+			$('#brand-edit .form-horizontal')
+				.attr('action', '/brands/edit/'+brand.id);
+			$('#brand-edit #name'). val(brand.name);
+			$('#brand-edit').modal('show');
+			$.each(brand.suppliers, function(){
+				$('#brand-edit input:checkbox[name=suppliers[]][value='+this.id+']').attr('checked', true);
+			});
+		});
+	});
+	
+	$('.supplier-edit').click(function(){
+		var attr_id = $(this).attr('id');
+		var values = attr_id.split('-');
+		var id = values[2];
+		$.ajax({
+			type: "GET",
+			url: "/suppliers/edit/" + id
+		}).done(function( data ) {
+			var supplier = data[0];
+			$('#supplier-edit .form-horizontal')
+				.attr('action', '/suppliers/edit/'+brand.id);
+			$('#supplier-edit #name'). val(supplier.name);
+			$('#supplier-edit #url'). val(supplier.url);
+			$('#supplier-edit #address'). val(supplier.address);
+			$('#supplier-edit #phone'). val(supplier.phone);
+			$('#supplier-edit').modal('show');
+		});
+	});
 	
 });
 
