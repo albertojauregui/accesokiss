@@ -46,14 +46,25 @@ class Brands_Controller extends Base_Controller {
 	
 	public function action_edit($id)
 	{
-		if (Resquest::method() == 'GET'){
-			$brand = Brand::find($id);
-			return View::make('brands.edit', $brand);
+		if (Request::method() == 'GET'){
+			if (Request::ajax()){
+				return Response::eloquent(
+					Brand::with('suppliers')
+						->where('id', '=', $id)
+						->get()
+				);
+			} else {
+				$brand = Brand::find($id);
+				return View::make('brands.edit', $brand);
+			}
 		} elseif (Request::method() == 'POST'){
 			$brand = Brand::find($id);
 			$brand->name = Input::get('name');
 			if ($brand->save()){
 				// Edición exitosa
+				if (Input::get('suppliers')){
+					$brand->suppliers()->sync(Input::get('suppliers'));
+				}
 				return Redirect::to('/brands')
 					->with('status', View::make('partials.fancy-status', array('message' => 'Edición exitosa',
 						'type' => 'success',
