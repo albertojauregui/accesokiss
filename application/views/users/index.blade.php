@@ -51,6 +51,52 @@
 			{{ Form::close() }}
 		</div>
 	</div>
+	{{--Modal para editar usuarios--}}
+	<div class="modal fade hide" id="user-edit">
+		<div class="form-wrapper">
+			{{ Form::open('/users/edit/', 'POST', array('class' => 'form-horizontal')) }}
+				<div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal">×</button>
+				    <h3>.: Edita el usuario</h3>
+				</div>
+				<div class="modal-body">
+					<div class="row-fluid">
+						<div class="span1">&nbsp;</div>	
+						<div class="span10">
+							<fieldset>
+								<div class="control-group">
+									{{ Form::label('username', 'Nombre de Usuario', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('username') }}
+									</div>
+								</div>
+
+								<div class="control-group">
+									{{ Form::label('password', 'Contraseña', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('password') }}
+									</div>
+								</div>
+
+								<div class="control-group">
+									{{ Form::label('is_admin', '¿Es admin?', array('class' => 'control-label'))}}
+									<div class="controls">
+										<label class="checkbox">
+											{{ Form::checkbox('is_admin', 1) }}
+										</label>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+				    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+					{{ Form::submit('Edita el Usuario', array('class' => 'btn-primary')) }}
+				</div>
+			{{ Form::close() }}
+		</div>
+	</div>
 	{{--Markup del index de usuarios--}}
 	<div class="users-index">
 		<div class = "module-actions">
@@ -105,7 +151,7 @@
 									<a href = "/users/credentials/{{ $user->id }}" class = "btn btn-primary" rel = "tooltip" title = "Manejar accesos">
 										<i class="icon-lock icon-white"></i>
 									</a>
-									<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el usuario">
+									<a href = "#" class = "btn btn-warning user-edit" rel = "tooltip" title = "Editar el usuario" id = "user-edit-{{ $user->id }}">
 										<i class="icon-pencil icon-white"></i>
 									</a>
 									<a href = "/users/delete/{{ $user->id }}" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el usuario">
