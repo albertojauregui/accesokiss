@@ -69,8 +69,12 @@ class Users_Controller extends Base_Controller {
 	public function action_edit($id)
 	{
 		if (Resquest::method() == 'GET'){
-			$user = User::find($id);
-			return View::make('users.edit', $user);
+			if (Request::ajax()){
+				return Response::eloquent(User::find($id));
+			} else {
+				$user = User::find($id);
+				return View::make('users.edit', $user);
+			}
 		} elseif (Request::method() == 'POST'){
 			$user = User::find($id);
 			$user->username = Input::get('username');
