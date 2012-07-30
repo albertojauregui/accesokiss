@@ -2,6 +2,10 @@
 
 class Users_Controller extends Base_Controller {
 
+	public function __construct(){
+		$this->filter('before', 'auth')->except(array('login'));
+	}
+
 	public function action_index()
 	{
 		$users = User::all();
