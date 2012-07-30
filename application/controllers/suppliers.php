@@ -55,7 +55,7 @@ class Suppliers_Controller extends Base_Controller {
 	{
 		if (Resquest::method() == 'GET'){
 			if (Request::ajax()){
-				return Response::eloquent(Supplier::all());
+				return Response::eloquent(Supplier::find($id));
 			} else {
 				$supplier = Supplier::find($id);
 				return View::make('suppliers.edit', $supplier);
