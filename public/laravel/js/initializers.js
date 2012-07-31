@@ -22,6 +22,7 @@ $(function (){
 				}
 			}
 		});
+		$('.btn.active, .btn.disable').button('reset');
 	});
 
 	$('.slide-related').click(function (event){
@@ -29,10 +30,13 @@ $(function (){
 		slideContent($(this), '.list-element', '.related-container');
 	});
 
-	$('.brand-edit').click(function(){
+	$('.brand-edit').click(function(event){
+		event.preventDefault();
+		var $boton = $(this);
 		var attr_id = $(this).attr('id');
 		var values = attr_id.split('-');
 		var id = values[2];
+		$boton.button('loading');
 		$.ajax({
 			type: "GET",
 			url: "/brands/edit/" + id
@@ -41,17 +45,22 @@ $(function (){
 			$('#brand-edit .form-horizontal')
 				.attr('action', '/brands/edit/'+brand.id);
 			$('#brand-edit #name'). val(brand.name);
+			if (brand.suppliers){
+				$.each(brand.suppliers, function(){
+					$('#brand-edit input:checkbox[name=suppliers[]][value='+this.id+']').attr('checked', true);
+				});
+			}
+			$boton.button('reset');
 			$('#brand-edit').modal('show');
-			$.each(brand.suppliers, function(){
-				$('#brand-edit input:checkbox[name=suppliers[]][value='+this.id+']').attr('checked', true);
-			});
 		});
 	});
 	
 	$('.supplier-edit').click(function(){
+		var $boton = $(this);
 		var attr_id = $(this).attr('id');
 		var values = attr_id.split('-');
 		var id = values[2];
+		$boton.button('loading');
 		$.ajax({
 			type: "GET",
 			url: "/suppliers/edit/" + id
@@ -63,17 +72,22 @@ $(function (){
 			$('#supplier-edit #url'). val(supplier.url);
 			$('#supplier-edit #address'). val(supplier.address);
 			$('#supplier-edit #phone'). val(supplier.phone);
-			$.each(supplier.brands, function(){
-				$('#supplier-edit input:checkbox[name=brands[]][value='+this.id+']').attr('checked', true);
-			});
+			if (supplier.brands){
+				$.each(supplier.brands, function(){
+					$('#supplier-edit input:checkbox[name=brands[]][value='+this.id+']').attr('checked', true);
+				});
+			}
+			$boton.button('reset');
 			$('#supplier-edit').modal('show');
 		});
 	});
 	
 	$('.user-edit').click(function(){
+		var $boton = $(this);
 		var attr_id = $(this).attr('id');
 		var values = attr_id.split('-');
 		var id = values[2];
+		$boton.button('loading');
 		$.ajax({
 			type: "GET",
 			url: "/users/edit/" + id
@@ -84,15 +98,18 @@ $(function (){
 			$('#user-edit #username'). val(user.username);
 			$('#user-edit #password'). val(user.password);
 			$('#user-edit #is_admin'). attr('checked', user.is_admin);
+			$boton.button('reset');
 			$('#user-edit').modal('show');
 		});
 	});
 
 	$('.credential-edit').click(function(){
+		var $boton = $(this);
 		var attr_id = $(this).attr('id');
 		var values = attr_id.split('-');
 		var user_id = values[2];
 		var credential_id = values[3];
+		$boton.button('loading');
 		$.ajax({
 			type: "GET",
 			url: "/credentials/editinfo/" + user_id + '/' + credential_id
@@ -104,6 +121,7 @@ $(function (){
 			$('#credential-edit #user'). val(credential.user);
 			$('#credential-edit #password'). val(credential.password);
 			$('#credential-edit #supplier'). val(credential.supplier_id);
+			$boton.button('reset');
 			$('#credential-edit').modal('show');
 		});
 	});
