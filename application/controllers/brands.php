@@ -5,7 +5,7 @@ class Brands_Controller extends Base_Controller {
 	public function action_index()
 	{
 		$brands = Brand::with('suppliers')->order_by('name', 'ASC')->get();
-		$suppliers = Supplier::all();
+		$suppliers = Supplier::order_by('name', 'ASC')->get();
 		return View::make('brands.index', array(
 			'brands' => $brands,
 			'suppliers' => $suppliers,
