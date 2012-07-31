@@ -139,9 +139,11 @@ class Users_Controller extends Base_Controller {
 		$data = User::with(array('suppliers', 'suppliers.brands'))
 			->where('id', '=', $user_id)
 			->get();
+		$suppliers = Supplier::order_by('name', 'ASC')->get();
 		return View::make('credentials.index', array(
 			'credentials' => $data,
 			'user_id' => $user_id,
+			'suppliers' => $suppliers,
 		));
 	}
 
