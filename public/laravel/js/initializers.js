@@ -14,10 +14,13 @@ $(function (){
 	$('.modal').on('hidden', function(){
 		var $inputs = $(this).find('input');
 		$.each($inputs, function(){
-			if ($(this).is(':checkbox')){
-				$(this).attr('checked', false);
+			if ($(this).attr('type') != 'hidden'){
+				if ($(this).is(':checkbox')){
+					$(this).attr('checked', false);
+				} else {
+					$(this).val('');
+				}
 			}
-			$(this).val('');
 		});
 	});
 
