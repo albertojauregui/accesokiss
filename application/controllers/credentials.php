@@ -7,9 +7,11 @@ class Credentials_Controller extends Base_Controller {
 		$data = User::with(array('suppliers', 'suppliers.brands'))
 			->where('id', '=', Auth::user()->id)
 			->get();
+		$suppliers = Supplier::order_by('name', 'ASC')->get();
 		return View::make('credentials.index', array(
 			'credentials' => $data,
 			'user_id' => $user_id,
+			'suppliers' => $suppliers,
 		));
 	}
 	
@@ -31,13 +33,13 @@ class Credentials_Controller extends Base_Controller {
 			)))
 			{
 				// Guardado con éxito
-				return Redirect::to('/credentials')
+				return Redirect::to('/credentials/index/' . $user->id)
 					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado exitoso',
 						'type' => 'success',
 					)));
 			} else {
 				// Guardado fallido
-				return Redirect::to('/credentials')
+				return Redirect::to('/credentials/index/' . $user->id)
 					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado fallido',
 						'type' => 'danger',
 					)));
