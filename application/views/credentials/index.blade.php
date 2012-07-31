@@ -122,7 +122,7 @@
 							<div class="span3">
 								Nombre
 							</div>
-							<div class="span3">
+							<div class="span2">
 								Usuario
 							</div>
 							<div class="span2">
@@ -131,7 +131,7 @@
 							<div class="span2">
 								Sitio Web
 							</div>
-							<div class="span2">
+							<div class="span3">
 								Acciones
 							</div>
 						</div>
@@ -145,7 +145,7 @@
 										<i class="icon-info-sign icon-white"></i>
 									</a>
 								</div>
-								<div class="span3">
+								<div class="span2">
 									{{ $supplier->pivot->user }}
 								</div>
 								<div class="span2">
@@ -157,12 +157,12 @@
 										Visitar
 									</a>
 								</div>
-								<div class="span2">
+								<div class="span3">
 									<a href = "#" class = "btn btn-primary slide-related" rel = "tooltip" title = "Mostrar marcas">
 										<i class="icon-tags icon-white"></i>
 										<span class="caret"></span>
 									</a>
-									<a href = "#" class = "btn btn-warning credential-edit" rel = "tooltip" title = "Editar el acceso" id = "credential-edit-{{ $credentials[0]->id }}-{{ $supplier->pivot->id }}">
+									<a href = "#" class = "btn btn-warning credential-edit" rel = "tooltip" title = "Editar el acceso" id = "credential-edit-{{ $credentials[0]->id }}-{{ $supplier->pivot->id }}" data-loading-text="Cargando...">
 										<i class="icon-pencil icon-white"></i>
 									</a>
 									<a href = "/credentials/delete/{{ $credentials[0]->id }}/{{ $supplier->pivot->id }}" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el acceso">

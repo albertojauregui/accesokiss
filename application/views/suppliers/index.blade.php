@@ -188,7 +188,7 @@
 									{{ $supplier->phone }}
 								</div>
 								<div class="span2">
-									<a href = "#" class = "btn btn-warning supplier-edit" rel = "tooltip" title = "Editar el proveedor" id = "supplier-edit-{{ $supplier->id }}">
+									<a href = "#" class = "btn btn-warning supplier-edit" rel = "tooltip" title = "Editar el proveedor" id = "supplier-edit-{{ $supplier->id }}" data-loading-text="Cargando...">
 										<i class="icon-pencil icon-white"></i>
 									</a>
 									<a href = "/suppliers/delete/{{ $supplier->id }}" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el proveedor">

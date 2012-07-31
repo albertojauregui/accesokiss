@@ -151,7 +151,7 @@
 									<a href = "/users/credentials/{{ $user->id }}" class = "btn btn-primary" rel = "tooltip" title = "Manejar accesos">
 										<i class="icon-lock icon-white"></i>
 									</a>
-									<a href = "#" class = "btn btn-warning user-edit" rel = "tooltip" title = "Editar el usuario" id = "user-edit-{{ $user->id }}">
+									<a href = "#" class = "btn btn-warning user-edit" rel = "tooltip" title = "Editar el usuario" id = "user-edit-{{ $user->id }}" data-loading-text="Cargando...">
 										<i class="icon-pencil icon-white"></i>
 									</a>
 									<a href = "/users/delete/{{ $user->id }}" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el usuario">

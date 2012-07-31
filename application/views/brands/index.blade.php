@@ -138,7 +138,7 @@
 										<i class="icon-tags icon-white"></i>
 										<span class="caret"></span>
 									</a>
-									<a href = "#" class = "btn btn-warning brand-edit" rel = "tooltip" title = "Editar la marca" id = "brand-edit-{{ $brand->id }}">
+									<a href = "#" class = "btn btn-warning brand-edit" rel = "tooltip" title = "Editar la marca" id = "brand-edit-{{ $brand->id }}" data-loading-text="Cargando...">
 										<i class="icon-pencil icon-white"></i>
 									</a>
 									<a href = "/brands/delete/{{ $brand->id }}" class = "btn btn-danger" rel = "tooltip" title = "Eliminar la marca">
