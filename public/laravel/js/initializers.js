@@ -14,6 +14,9 @@ $(function (){
 	$('.modal').on('hidden', function(){
 		var $inputs = $(this).find('input');
 		$.each($inputs, function(){
+			if ($(this).is(':checkbox')){
+				$(this).attr('checked', false);
+			}
 			$(this).val('');
 		});
 	});
@@ -65,11 +68,14 @@ $(function (){
 		}).done(function( data ) {
 			var supplier = data[0];
 			$('#supplier-edit .form-horizontal')
-				.attr('action', '/suppliers/edit/'+brand.id);
+				.attr('action', '/suppliers/edit/'+supplier.id);
 			$('#supplier-edit #name'). val(supplier.name);
 			$('#supplier-edit #url'). val(supplier.url);
 			$('#supplier-edit #address'). val(supplier.address);
 			$('#supplier-edit #phone'). val(supplier.phone);
+			$.each(supplier.brands, function(){
+				$('#supplier-edit input:checkbox[name=brands[]][value='+this.id+']').attr('checked', true);
+			});
 			$('#supplier-edit').modal('show');
 		});
 	});
@@ -82,12 +88,12 @@ $(function (){
 			type: "GET",
 			url: "/users/edit/" + id
 		}).done(function( data ) {
-			var user = data[0];
+			var user = data;
 			$('#user-edit .form-horizontal')
-				.attr('action', '/suppliers/edit/'+user.id);
-			$('#user-edit #username'). val(user.name);
+				.attr('action', '/users/edit/'+user.id);
+			$('#user-edit #username'). val(user.username);
 			$('#user-edit #password'). val(user.password);
-			$('#user-edit #is_admin'). val(user.is_admin);
+			$('#user-edit #is_admin'). attr('checked', user.is_admin);
 			$('#user-edit').modal('show');
 		});
 	});
