@@ -5,7 +5,7 @@ class Credentials_Controller extends Base_Controller {
 	public function action_index($user_id)
 	{
 		$data = User::with(array('suppliers', 'suppliers.brands'))
-			->where('id', '=', Auth::user()->id)
+			->where('id', '=', $user_id)
 			->get();
 		$suppliers = Supplier::order_by('name', 'ASC')->get();
 		return View::make('credentials.index', array(
@@ -46,13 +46,18 @@ class Credentials_Controller extends Base_Controller {
 			}
 		}
 	}
-	
-	public function action_edit($user_id, $pivot_id)
-	{
+
+	public function action_editinfo($user_id, $pivot_id){
 		if (Request::method() == 'GET'){
 			if (Request::ajax()){
 				return Response::eloquent(User::find($user_id)->suppliers()->pivot()->where('id', '=', $pivot_id)->get());
 			}
+		}
+	}
+	
+	public function action_edit($pivot_id)
+	{
+		if (Request::method() == 'GET'){
 		} elseif (Request::method() == 'POST') {
 			$user = User::find(Input::get('user_id'));
 			if ($user->suppliers()->attach(Input::get('supplier'), array(
