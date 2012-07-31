@@ -5,10 +5,14 @@ class Suppliers_Controller extends Base_Controller {
 	public function action_index()
 	{
 		if (Request::ajax()){
-			return Response::eloquent(Supplier::all());
+			return Response::eloquent(
+				Supplier::order_by('name', 'ASC')->get()
+			);
 		} else {
-			$suppliers = Supplier::with('brands')->get();
-			$brands = Brand::all();
+			$suppliers = Supplier::with('brands')
+				->order_by('name', 'ASC')
+				->get();
+			$brands = Brand::order_by('name', 'ASC')->get();
 			return View::make('suppliers.index', array(
 				'suppliers' => $suppliers,
 				'brands' => $brands,
@@ -53,11 +57,16 @@ class Suppliers_Controller extends Base_Controller {
 	
 	public function action_edit($id)
 	{
-		if (Resquest::method() == 'GET'){
+		if (Request::method() == 'GET'){
 			if (Request::ajax()){
-				return Response::eloquent(Supplier::find($id));
+				return Response::eloquent(
+					Supplier::with('brands')
+						->where('id', '=', $id)
+						->order_by('name', 'ASC')
+						->get()
+					);
 			} else {
-				$supplier = Supplier::find($id);
+				$supplier = Supplier::find($id)->order_by('name', 'ASC');
 				return View::make('suppliers.edit', $supplier);
 			}
 		} elseif (Request::method() == 'POST'){
@@ -68,6 +77,9 @@ class Suppliers_Controller extends Base_Controller {
 			$supplier->phone   = Input::get('phone');
 			if ($supplier->save()){
 				// Edición exitosa
+				if (Input::get('brands')){
+					$supplier->brands()->sync(Input::get('brands'));
+				}
 				return Redirect::to('/suppliers')
 					->with('status', View::make('partials.fancy-status', array('message' => 'Edición exitosa',
 						'type' => 'success',
