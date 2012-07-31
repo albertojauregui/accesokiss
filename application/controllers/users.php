@@ -8,7 +8,7 @@ class Users_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		$users = User::all();
+		$users = User::order_by('username', 'ASC')->get();
 		return View::make('users.index', array(
 			'users' => $users
 		));
@@ -72,7 +72,7 @@ class Users_Controller extends Base_Controller {
 	
 	public function action_edit($id)
 	{
-		if (Resquest::method() == 'GET'){
+		if (Request::method() == 'GET'){
 			if (Request::ajax()){
 				return Response::eloquent(User::find($id));
 			} else {
