@@ -33,7 +33,13 @@
 								<div class="control-group">
 									{{ Form::label('supplier', 'Proveedor', array('class' => 'control-label'))}}
 									<div class="controls">
-										{{ Form::select('supplier', array('0' => 'Cargando Proveedores...')) }}
+										<select name="supplier" id="supplier">
+											@forelse ($suppliers as $supplier)
+												<option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+											@empty
+												<option value="0">Sin Proveedores</option>
+											@endforelse
+										</select>
 									</div>
 								</div>
 								{{ Form::hidden('user_id', $user_id) }}
@@ -76,7 +82,13 @@
 								<div class="control-group">
 									{{ Form::label('supplier', 'Proveedor', array('class' => 'control-label'))}}
 									<div class="controls">
-										{{ Form::select('supplier', array('0' => 'Cargando Proveedores...')) }}
+										<select name="supplier" id="supplier">
+											@forelse ($suppliers as $supplier)
+												<option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+											@empty
+												<option value="0">Sin Proveedores</option>
+											@endforelse
+										</select>
 									</div>
 								</div>
 								{{ Form::hidden('user_id', $user_id) }}
