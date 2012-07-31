@@ -54,8 +54,12 @@ class Suppliers_Controller extends Base_Controller {
 	public function action_edit($id)
 	{
 		if (Resquest::method() == 'GET'){
-			$supplier = Supplier::find($id);
-			return View::make('suppliers.edit', $supplier);
+			if (Request::ajax()){
+				return Response::eloquent(Supplier::find($id));
+			} else {
+				$supplier = Supplier::find($id);
+				return View::make('suppliers.edit', $supplier);
+			}
 		} elseif (Request::method() == 'POST'){
 			$supplier = Supplier::find($id);
 			$supplier->name    = Input::get('name');

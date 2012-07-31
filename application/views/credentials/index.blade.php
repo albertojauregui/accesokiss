@@ -48,6 +48,49 @@
 			{{ Form::close() }}
 		</div>
 	</div>
+	{{--Modal para editar proveedores--}}
+	<div class="modal fade hide modal-credentials" id="credential-edit">
+		<div class="form-wrapper">
+			{{ Form::open('/credentials/edit/', 'POST', array('class' => 'form-horizontal')) }}
+				<div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal">×</button>
+				    <h3>.: Edita el acceso</h3>
+				</div>
+				<div class="modal-body">
+					<div class="row-fluid">
+						<div class="span1">&nbsp;</div>	
+						<div class="span10">
+							<fieldset>
+								<div class="control-group">
+									{{ Form::label('user', 'Nombre del Usuario', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('user') }}
+									</div>
+								</div>
+								<div class="control-group">
+									{{ Form::label('password', 'Contraseña', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::text('password') }}
+									</div>
+								</div>
+								<div class="control-group">
+									{{ Form::label('supplier', 'Proveedor', array('class' => 'control-label'))}}
+									<div class="controls">
+										{{ Form::select('supplier', array('0' => 'Cargando Proveedores...')) }}
+									</div>
+								</div>
+								{{ Form::hidden('user_id', $user_id) }}
+							</fieldset>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+				    <a href="#" class="btn btn-danger" data-dismiss="modal">Cancelar</a>
+					{{ Form::submit('Edita el acceso', array('class' => 'btn-primary')) }}
+				</div>
+			{{ Form::close() }}
+		</div>
+	</div>
 	{{--Markup del index de proveedores--}}
 	<div class="credentials-index">
 		<div class = "module-actions">
@@ -107,7 +150,7 @@
 										<i class="icon-tags icon-white"></i>
 										<span class="caret"></span>
 									</a>
-									<a href = "#" class = "btn btn-warning" rel = "tooltip" title = "Editar el acceso">
+									<a href = "#" class = "btn btn-warning credential-edit" rel = "tooltip" title = "Editar el acceso" id = "credential-edit-{{ $credentials[0]->id }}-{{ $supplier->pivot->id }}">
 										<i class="icon-pencil icon-white"></i>
 									</a>
 									<a href = "/credentials/delete/{{ $credentials[0]->id }}/{{ $supplier->pivot->id }}" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el acceso">

@@ -2,6 +2,9 @@
 
 class Home_Controller extends Base_Controller {
 
+	public function __construct(){
+		$this->filter('before', 'auth')->except(array('index'));
+	}
 	/*
 	|--------------------------------------------------------------------------
 	| The Default Controller
