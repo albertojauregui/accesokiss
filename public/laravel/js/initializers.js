@@ -21,19 +21,6 @@ $(function (){
 		});
 	});
 
-	$('.modal-credentials').on('show', function(){
-		$.ajax({
-			type: "GET",
-			url: "/suppliers"
-		}).done(function( data ) {
-			var html = '';
-			$.each(data, function(key, supplier){
-				html += '<option value = "'+supplier.id+'">'+supplier.name+'</option>';
-			});
-			$('#supplier').html(html);
-		});
-	});
-
 	$('.slide-related').click(function (event){
 		event.preventDefault();
 		slideContent($(this), '.list-element', '.related-container');
@@ -95,6 +82,26 @@ $(function (){
 			$('#user-edit #password'). val(user.password);
 			$('#user-edit #is_admin'). attr('checked', user.is_admin);
 			$('#user-edit').modal('show');
+		});
+	});
+
+	$('.credential-edit').click(function(){
+		var attr_id = $(this).attr('id');
+		var values = attr_id.split('-');
+		var user_id = values[2];
+		var credential_id = values[3];
+		$.ajax({
+			type: "GET",
+			url: "/credentials/editinfo/" + user_id + '/' + credential_id
+		}).done(function( data ) {
+			var credential = data[0];
+			console.log(data);
+			$('#credential-edit .form-horizontal')
+				.attr('action', '/credentials/edit/'+credential.id);
+			$('#credential-edit #user'). val(credential.user);
+			$('#credential-edit #password'). val(credential.password);
+			$('#credential-edit #supplier'). val(credential.supplier_id);
+			$('#credential-edit').modal('show');
 		});
 	});
 	
