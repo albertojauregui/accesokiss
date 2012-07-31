@@ -60,19 +60,25 @@ class Credentials_Controller extends Base_Controller {
 		if (Request::method() == 'GET'){
 		} elseif (Request::method() == 'POST') {
 			$user = User::find(Input::get('user_id'));
-			if ($user->suppliers()->attach(Input::get('supplier'), array(
-				'user' => Input::get('user'),
-				'password' => Input::get('password'),
-			)))
+			if ($user->suppliers()->pivot()
+				->where('id', '=', $pivot_id)
+				->update(
+					array(
+						'user' => Input::get('user'),
+						'password' => Input::get('password'),
+						'supplier_id' => Input::get('supplier'),
+					)
+				)
+			)
 			{
 				// Guardado con éxito
-				return Redirect::to('/credentials')
+				return Redirect::to('/credentials/index/' . $user->id)
 					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado exitoso',
 						'type' => 'success',
 					)));
 			} else {
 				// Guardado fallido
-				return Redirect::to('/credentials')
+				return Redirect::to('/credentials/index/' . $user->id)
 					->with('status', View::make('partials.fancy-status', array('message' => 'Guardado fallido',
 						'type' => 'danger',
 					)));
@@ -83,12 +89,12 @@ class Credentials_Controller extends Base_Controller {
 	public function action_delete($user_id, $pivot_id)
 	{
 		if (User::find($user_id)->suppliers()->pivot()->where('id', '=', $pivot_id)->delete()){
-			return Redirect::to('/credentials')
+			return Redirect::to('/credentials/index/' . $user_id)
 				->with('status', View::make('partials.fancy-status', array('message' => 'Borrado de acceso exitoso',
 					'type' => 'success',
 				)));
 		} else {
-			return Redirect::to('/credentials')
+			return Redirect::to('/credentials/index/' . $user_id)
 				->with('status', View::make('partials.fancy-status', array('message' => 'Borrado de acceso fallido',
 					'type' => 'danger',
 				)));
