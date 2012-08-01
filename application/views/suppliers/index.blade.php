@@ -49,8 +49,9 @@
 						<div class="suppliers">
 							<h3>Marcas</h3>
 							<div class="suppliers-list">
-								@forelse ($brands as $brand)
-									<div class="span1">
+								@forelse ($brands as $key => $brand)
+									<?php $class = ($key % 3 == 0) ? 'no-margin': ''; ?>
+									<div class="span1 {{ $class }}">
 										{{ Form::checkbox('brands[]', $brand->id) }}
 									</div>
 									<div class="span3">
@@ -116,8 +117,9 @@
 						<div class="suppliers">
 							<h3>Marcas</h3>
 							<div class="suppliers-list">
-								@forelse ($brands as $brand)
-									<div class="span1">
+								@forelse ($brands as $key => $brand)
+									<?php $class = ($key % 3 == 0) ? 'no-margin': ''; ?>
+									<div class="span1 {{ $class }}">
 										{{ Form::checkbox('brands[]', $brand->id) }}
 									</div>
 									<div class="span3">

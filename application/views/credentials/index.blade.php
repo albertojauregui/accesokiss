@@ -171,10 +171,18 @@
 								</div>
 							</div>
 							<div class="row-fluid hide related-container">
-								<h3>Marcas del Proveedor</h3>
 								@forelse ($supplier->brands as $brand)
 									<div class="span3">
-										{{ $brand->name }}
+										<i class="icon-tags"></i>
+										<strong>
+											{{ $brand->name }}
+										</strong>
+									</div>
+									<div class="span3">
+										<i class="icon-tags"></i>
+										<strong>
+											{{ $brand->name }}
+										</strong>
 									</div>
 								@empty
 									<div class="alert alert-error">
