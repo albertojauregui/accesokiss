@@ -111,3 +111,17 @@ Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::to('/');
 });
+
+Route::filter('admin', function()
+{
+	if (Auth::check()){
+		if (!Auth::user()->is_admin){
+			return Redirect::to('/credentials/index/'.Auth::user()->id)
+				->with('status', View::make('partials.fancy-status', array('message' => 'Acceso Restringido',
+					'type' => 'danger',
+				)));
+		}
+	} else {
+		return Redirect::to('/');
+	}
+});
