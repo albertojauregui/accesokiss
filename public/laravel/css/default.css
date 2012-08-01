@@ -83,3 +83,12 @@ a.btn {
 .btn.visitar-proveedor {
 	display: block;
 }
+
+.related-container {
+	margin-bottom: 16px;
+	margin-top: 16px;
+}
+
+.row-fluid .no-margin {
+	margin: 0px;
+}
