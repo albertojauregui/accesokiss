@@ -3,7 +3,8 @@
 class Users_Controller extends Base_Controller {
 
 	public function __construct(){
-		$this->filter('before', 'auth|admin')->except(array('login'));
+		$this->filter('before', 'auth|admin')
+			->except(array('login', 'logout'));
 	}
 
 	public function action_index()
