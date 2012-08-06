@@ -31,13 +31,13 @@
 									</div>
 								</div>
 								<div class="control-group">
-									{{ Form::label('address', 'Dirección', array('class' => 'control-label'))}}
+									{{ Form::label('address', 'Ubicado en', array('class' => 'control-label'))}}
 									<div class="controls">
 										{{ Form::text('address') }}
 									</div>
 								</div>
 								<div class="control-group">
-									{{ Form::label('phone', 'Teléfono', array('class' => 'control-label'))}}
+									{{ Form::label('phone', 'Flete', array('class' => 'control-label'))}}
 									<div class="controls">
 										{{ Form::text('phone') }}
 									</div>
@@ -99,13 +99,13 @@
 									</div>
 								</div>
 								<div class="control-group">
-									{{ Form::label('address', 'Dirección', array('class' => 'control-label'))}}
+									{{ Form::label('address', 'Ubicado en', array('class' => 'control-label'))}}
 									<div class="controls">
 										{{ Form::text('address') }}
 									</div>
 								</div>
 								<div class="control-group">
-									{{ Form::label('phone', 'Teléfono', array('class' => 'control-label'))}}
+									{{ Form::label('phone', 'Flete', array('class' => 'control-label'))}}
 									<div class="controls">
 										{{ Form::text('phone') }}
 									</div>
@@ -164,10 +164,10 @@
 								Página Web
 							</div>
 							<div class="span2">
-								Dirección
+								Ubicado en
 							</div>
 							<div class="span2">
-								Teléfono
+								Flete
 							</div>
 							<div class="span2">
 								Acciones
