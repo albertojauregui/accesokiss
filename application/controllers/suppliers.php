@@ -103,23 +103,36 @@ class Suppliers_Controller extends Base_Controller {
 	{
 		$supplier = Supplier::find($id);
 		if ($supplier){
-			if (    $supplier->brands()->delete() 
-				and $supplier->users()->delete())
-			{
-				if ($supplier->delete()){
-					return Redirect::to('/suppliers')
-						->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación exitosa',
-							'type' => 'success',
-						)));
+			$brands = $supplier->brands()->pivot()->get();
+			$users  = $supplier->users()->pivot()->get();
+			if (! empty($brands)){
+				// Tiene elementos relacionados
+				if ($supplier->brands()->delete()){
 				} else {
 					return Redirect::to('/suppliers')
-						->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación fallida',
+						->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación de asociación de marcas fallida',
 							'type' => 'danger',
 						)));
 				}
+			}
+			if (! empty($users)){
+				//Tiene elementos relacionados
+				if ($supplier->users()->delete()){
+				} else {
+					return Redirect::to('/suppliers')
+						->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación de asociación de usuarios fallida',
+							'type' => 'danger',
+						)));
+				}
+			}
+			if ($supplier->delete()){
+				return Redirect::to('/suppliers')
+					->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación exitosa',
+						'type' => 'success',
+					)));
 			} else {
 				return Redirect::to('/suppliers')
-					->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación de accesos y marcas fallida',
+					->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación fallida',
 						'type' => 'danger',
 					)));
 			}
