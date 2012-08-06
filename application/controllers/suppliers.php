@@ -101,7 +101,7 @@ class Suppliers_Controller extends Base_Controller {
 	
 	public function action_delete($id)
 	{
-		$suppliers = Supplier::find($id);
+		$supplier = Supplier::find($id);
 		if ($supplier){
 			if (    $supplier->brands()->delete() 
 				and $supplier->users()->delete())
