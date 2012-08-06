@@ -83,21 +83,25 @@ class Brands_Controller extends Base_Controller {
 	{
 		$brand = Brand::find($id);
 		if ($brand){
-			if ($brand->suppliers()->delete()){
-				if ($brand->delete()){
-					return Redirect::to('/brands')
-						->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación exitosa',
-							'type' => 'success',
-						)));
+			$suppliers = $brand->suppliers()->pivot()->get();
+			if (! empty($suppliers)){
+				//Tiene elementos relacionados	
+				if ($brand->suppliers()->delete()){
 				} else {
 					return Redirect::to('/brands')
-						->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación fallida',
+						->with('status', View::make('partials.fancy-status', array('message' => 'Borrado de asociación de  proveedores fallido',
 							'type' => 'danger',
 						)));
 				}
+			}
+			if ($brand->delete()){
+				return Redirect::to('/brands')
+					->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación exitosa',
+						'type' => 'success',
+					)));
 			} else {
 				return Redirect::to('/brands')
-					->with('status', View::make('partials.fancy-status', array('message' => 'Borrado de proveedores fallido',
+					->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación fallida',
 						'type' => 'danger',
 					)));
 			}
