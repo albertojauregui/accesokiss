@@ -125,6 +125,58 @@ $(function (){
 			$('#credential-edit').modal('show');
 		});
 	});
+
+	//Agregamos el mensaje de confirmación a los botones de eliminar
+	$('.btn-delete-supplier').click(function(event){
+		event.preventDefault();
+		$this = $(this);
+		var data = $this.attr('id').split('-');
+		if (confirm('¿Deseas eliminar al provedor: ' + data[3] + '?')){
+			//Eliminarlo
+			window.location = $this.attr('href');
+		} else {
+			//No hacer nada
+		}
+	});
+	
+	//Agregamos el mensaje de confirmación a los botones de eliminar
+	$('.btn-delete-brand').click(function(event){
+		event.preventDefault();
+		$this = $(this);
+		var data = $this.attr('id').split('-');
+		if (confirm('¿Deseas eliminar la marca: ' + data[3] + '?')){
+			//Eliminarlo
+			window.location = $this.attr('href');
+		} else {
+			//No hacer nada
+		}
+	});
+	
+	//Agregamos el mensaje de confirmación a los botones de eliminar
+	$('.btn-delete-user').click(function(event){
+		event.preventDefault();
+		$this = $(this);
+		var data = $this.attr('id').split('-');
+		if (confirm('¿Deseas eliminar al usuario: ' + data[3] + '?')){
+			//Eliminarlo
+			window.location = $this.attr('href');
+		} else {
+			//No hacer nada
+		}
+	});
+	
+	//Agregamos el mensaje de confirmación a los botones de eliminar
+	$('.btn-delete-credential').click(function(event){
+		event.preventDefault();
+		$this = $(this);
+		var data = $this.attr('id').split('-');
+		if (confirm('¿Deseas eliminar el acceso a: ' + data[3] + '?')){
+			//Eliminarlo
+			window.location = $this.attr('href');
+		} else {
+			//No hacer nada
+		}
+	});
 	
 });
 
