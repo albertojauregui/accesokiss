@@ -178,12 +178,6 @@
 											{{ $brand->name }}
 										</strong>
 									</div>
-									<div class="span3">
-										<i class="icon-tags"></i>
-										<strong>
-											{{ $brand->name }}
-										</strong>
-									</div>
 								@empty
 									<div class="alert alert-error">
 										No encontramos ninguna marca para el proveedor
