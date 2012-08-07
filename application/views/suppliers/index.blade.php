@@ -157,17 +157,8 @@
 				<div class="span12">
 					<div class="list-header">
 						<div class="row-fluid">
-							<div class="span3">
-								Nombre
-							</div>
-							<div class="span3">
-								Página Web
-							</div>
-							<div class="span2">
-								Ubicado en
-							</div>
-							<div class="span2">
-								Flete
+							<div class="span10">
+								&nbsp;
 							</div>
 							<div class="span2">
 								Acciones
@@ -177,17 +168,25 @@
 					@forelse ($suppliers as $supplier)
 						<div class="list-element">
 							<div class="row-fluid">
-								<div class="span3">
-									{{ $supplier->name }}
-								</div>
-								<div class="span3">
-									{{ $supplier->url }}
-								</div>
-								<div class="span2">
-									{{ $supplier->address }}
-								</div>
-								<div class="span2">
-									{{ $supplier->phone }}
+								<div class="span10">
+									<dl class="dl-horizontal">
+										@if ($supplier->name)
+											<dt>Nombre: </dt>	
+											<dd>{{ $supplier->name }}</dd>
+										@endif
+										@if ($supplier->url)
+											<dt>Url: </dt>	
+											<dd>{{ $supplier->url }}</dd>
+										@endif
+										@if ($supplier->address)
+											<dt>Flete: </dt>	
+											<dd>{{ $supplier->address }}</dd>
+										@endif
+										@if ($supplier->phone)
+											<dt>Teléfono: </dt>	
+											<dd>{{ $supplier->phone }}</dd>
+										@endif
+									</dl>
 								</div>
 								<div class="span2">
 									<a href = "#" class = "btn btn-warning supplier-edit" rel = "tooltip" title = "Editar el proveedor" id = "supplier-edit-{{ $supplier->id }}" data-loading-text="Cargando...">
