@@ -141,7 +141,7 @@
 							<div class="row-fluid">
 								<div class="span3">
 									{{ $supplier->name }}
-									<a href = "#" class = "btn btn-info" rel = "tooltip" title = "{{ $supplier->address }} - {{ $supplier->phone }}">
+									<a href = "#" class = "btn btn-info btn-mini pull-right" rel = "tooltip" title = "{{ $supplier->address }} - {{ $supplier->phone }}">
 										<i class="icon-info-sign icon-white"></i>
 									</a>
 								</div>
@@ -165,7 +165,7 @@
 									<a href = "#" class = "btn btn-warning credential-edit" rel = "tooltip" title = "Editar el acceso" id = "credential-edit-{{ $credentials[0]->id }}-{{ $supplier->pivot->id }}" data-loading-text="Cargando...">
 										<i class="icon-pencil icon-white"></i>
 									</a>
-									<a href = "/credentials/delete/{{ $credentials[0]->id }}/{{ $supplier->pivot->id }}" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el acceso">
+									<a href = "/credentials/delete/{{ $credentials[0]->id }}/{{ $supplier->pivot->id }}" class = "btn btn-danger btn-delete-credential" id = "btn-delete-credential-{{ $supplier->name }}" rel = "tooltip" title = "Eliminar el acceso">
 										<i class="icon-remove icon-white"></i>
 									</a>
 								</div>

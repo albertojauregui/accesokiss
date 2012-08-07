@@ -154,7 +154,7 @@
 									<a href = "#" class = "btn btn-warning user-edit" rel = "tooltip" title = "Editar el usuario" id = "user-edit-{{ $user->id }}" data-loading-text="Cargando...">
 										<i class="icon-pencil icon-white"></i>
 									</a>
-									<a href = "/users/delete/{{ $user->id }}" class = "btn btn-danger" rel = "tooltip" title = "Eliminar el usuario">
+									<a href = "/users/delete/{{ $user->id }}" class = "btn btn-danger btn-delete-user" id = "btn-delete-user-{{ $user->username }}" rel = "tooltip" title = "Eliminar el usuario">
 										<i class="icon-remove icon-white"></i>
 									</a>
 								</div>

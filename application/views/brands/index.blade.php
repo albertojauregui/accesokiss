@@ -143,7 +143,7 @@
 									<a href = "#" class = "btn btn-warning brand-edit" rel = "tooltip" title = "Editar la marca" id = "brand-edit-{{ $brand->id }}" data-loading-text="Cargando...">
 										<i class="icon-pencil icon-white"></i>
 									</a>
-									<a href = "/brands/delete/{{ $brand->id }}" class = "btn btn-danger" rel = "tooltip" title = "Eliminar la marca">
+									<a href = "/brands/delete/{{ $brand->id }}" class = "btn btn-danger btn-delete-brand" id = "btn-delete-brand-{{ $brand->name }}" rel = "tooltip" title = "Eliminar la marca">
 										<i class="icon-remove icon-white"></i>
 									</a>
 								</div>
