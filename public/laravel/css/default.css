@@ -80,6 +80,10 @@ a.btn {
 	text-align: center;
 }
 
+.list-element .related-container div {
+	text-align: left;
+}
+
 .btn.visitar-proveedor {
 	display: block;
 }
@@ -91,4 +95,8 @@ a.btn {
 
 .row-fluid .no-margin {
 	margin: 0px;
+}
+
+dl.dl-horizontal dd {
+	text-align: left;
 }
