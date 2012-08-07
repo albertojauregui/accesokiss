@@ -107,26 +107,30 @@ class Users_Controller extends Base_Controller {
 	{
 		$user = User::find($id);
 		if ($user){
-			if ($user->suppliers()->delete()){
-				if ($user->delete()){
-					return Redirect::to('/users')
-						->with('status', View::make('partials.fancy-status', 
-							array(
-								'message' => 'Eliminación exitosa',
-								'type' => 'success',
-							)
-						));
+			$suppliers = $user->suppliers()->pivot()->get();
+			if (! empty($suppliers)){
+				//Tiene accesos que deben ser eliminados
+				if ($user->suppliers()->delete()){
 				} else {
 					return Redirect::to('/users')
-					->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación fallida',
-						'type' => 'danger',
-					)));
+						->with('status', View::make('partials.fancy-status', array('message' => 'Borrado de accesos fallido',
+							'type' => 'danger',
+						)));
 				}
+			}
+			if ($user->delete()){
+				return Redirect::to('/users')
+					->with('status', View::make('partials.fancy-status', 
+						array(
+							'message' => 'Eliminación exitosa',
+							'type' => 'success',
+						)
+					));
 			} else {
 				return Redirect::to('/users')
-					->with('status', View::make('partials.fancy-status', array('message' => 'Borrado de accesos fallido',
-						'type' => 'danger',
-					)));
+				->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación fallida',
+					'type' => 'danger',
+				)));
 			}
 		} else {
 			return Redirect::to('/users')
