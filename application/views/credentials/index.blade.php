@@ -119,19 +119,10 @@
 				<div class="span12">
 					<div class="list-header">
 						<div class="row-fluid">
-							<div class="span3">
-								Nombre
+							<div class="span7">
+								&nbsp;
 							</div>
-							<div class="span2">
-								Usuario
-							</div>
-							<div class="span2">
-								Contraseña
-							</div>
-							<div class="span2">
-								Sitio Web
-							</div>
-							<div class="span3">
+							<div class="span5">
 								Acciones
 							</div>
 						</div>
@@ -139,25 +130,25 @@
 					@forelse ($credentials[0]->suppliers as $supplier)
 						<div class="list-element">
 							<div class="row-fluid">
-								<div class="span3">
-									{{ $supplier->name }}
-									<a href = "#" class = "btn btn-info btn-mini pull-right" rel = "tooltip" title = "{{ $supplier->address }} - {{ $supplier->phone }}">
-										<i class="icon-info-sign icon-white"></i>
-									</a>
+								<div class="span7">
+									<dl class="dl-horizontal">
+										<dt>Proveedor: </dt>
+										<dd>
+											{{ $supplier->name }}
+											<a href = "#" class = "btn btn-info btn-mini" rel = "tooltip" title = "{{ $supplier->address }} - {{ $supplier->phone }}">
+												<i class="icon-info-sign icon-white"></i>
+											</a>
+										</dd>
+										<dt>Usuario: </dt>
+										<dd>{{ $supplier->pivot->user }}</dd>
+										<dt>Contraseña: </dt>
+										<dd>{{ $supplier->pivot->password }}</dd>
+									</dl>
 								</div>
-								<div class="span2">
-									{{ $supplier->pivot->user }}
-								</div>
-								<div class="span2">
-									{{ $supplier->pivot->password }}
-								</div>
-								<div class="span2">
-									<a href = "{{ $supplier->url }}" class = "btn btn-primary visitar-proveedor" target = "_blank">
+								<div class="span5">
+									<a href = "{{ $supplier->url }}" class = "btn btn-success" target = "_blank" rel = "tooltip" title = "Visitar sitio del proveedor">
 										<i class="icon-share icon-white"></i>
-										Visitar
 									</a>
-								</div>
-								<div class="span3">
 									<a href = "#" class = "btn btn-primary slide-related" rel = "tooltip" title = "Mostrar marcas">
 										<i class="icon-tags icon-white"></i>
 										<span class="caret"></span>
@@ -171,6 +162,9 @@
 								</div>
 							</div>
 							<div class="row-fluid hide related-container">
+								<div class="separador">
+									&nbsp;
+								</div>
 								@forelse ($supplier->brands as $brand)
 									<div class="span3">
 										<i class="icon-tags"></i>
