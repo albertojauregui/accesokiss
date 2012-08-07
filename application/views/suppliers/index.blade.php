@@ -48,14 +48,14 @@
 					<div class="row-fluid">
 						<div class="suppliers">
 							<h3>Marcas</h3>
+							<br>
 							<div class="suppliers-list">
 								@forelse ($brands as $key => $brand)
-									<?php $class = ($key % 3 == 0) ? 'no-margin': ''; ?>
-									<div class="span1 {{ $class }}">
-										{{ Form::checkbox('brands[]', $brand->id) }}
-									</div>
-									<div class="span3">
-										{{ $brand->name }}
+									<div>
+										<label for = "add-brand-{{ $brand->id }}" class = "checkbox">
+											{{ Form::checkbox('brands[]', $brand->id, false, array('id' => 'add-brand-'.$brand->id)) }}
+											{{ $brand->name }}
+										</label>
 									</div>
 								@empty
 									<div class="alert alert-danger">
@@ -116,14 +116,14 @@
 					<div class="row-fluid">
 						<div class="suppliers">
 							<h3>Marcas</h3>
+							<br>
 							<div class="suppliers-list">
 								@forelse ($brands as $key => $brand)
-									<?php $class = ($key % 3 == 0) ? 'no-margin': ''; ?>
-									<div class="span1 {{ $class }}">
-										{{ Form::checkbox('brands[]', $brand->id) }}
-									</div>
-									<div class="span3">
-										{{ $brand->name }}
+									<div>
+										<label for = "edit-brand-{{ $brand->id }}" class = "checkbox">
+											{{ Form::checkbox('brands[]', $brand->id, false, array('id' => 'edit-brand-'.$brand->id)) }}
+											{{ $brand->name }}
+										</label>
 									</div>
 								@empty
 									<div class="alert alert-danger">
