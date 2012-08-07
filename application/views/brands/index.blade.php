@@ -30,14 +30,14 @@
 					<div class="row-fluid">
 						<div class="suppliers">
 							<h3>Proveedores</h3>
+							<br>
 							<div class="suppliers-list">
 								@forelse ($suppliers as $key => $supplier)
-									<?php $class = ($key % 3 == 0) ? 'no-margin': ''; ?>
-									<div class="span1 {{ $class }}">
-										{{ Form::checkbox('suppliers[]', $supplier->id) }}
-									</div>
-									<div class="span3">
-										{{ $supplier->name }}
+									<div>
+										<label for = "add-supplier-{{ $supplier->id }}" class = "checkbox">
+											{{ Form::checkbox('suppliers[]', $supplier->id, false, array('id' => 'add-supplier-'.$supplier->id)) }}
+											{{ $supplier->name }}
+										</label>
 									</div>
 								@empty
 									<div class="alert alert-danger">
@@ -80,14 +80,14 @@
 					<div class="row-fluid">
 						<div class="suppliers">
 							<h3>Proveedores</h3>
+							<br>
 							<div class="suppliers-list">
 								@forelse ($suppliers as $key => $supplier)
-									<?php $class = ($key % 3 == 0) ? 'no-margin': ''; ?>
-									<div class="span1 {{ $class }}">
-										{{ Form::checkbox('suppliers[]', $supplier->id) }}
-									</div>
-									<div class="span3">
-										{{ $supplier->name }}
+									<div>
+										<label for = "edit-supplier-{{ $supplier->id }}" class = "checkbox">
+											{{ Form::checkbox('suppliers[]', $supplier->id, false, array('id' => 'edit-supplier-'.$supplier->id)) }}
+											{{ $supplier->name }}
+										</label>
 									</div>
 								@empty
 									<div class="alert alert-danger">
