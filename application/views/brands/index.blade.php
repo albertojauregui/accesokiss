@@ -107,12 +107,14 @@
 	</div>
 	{{--Markup del index de marcas--}}
 	<div class="brands-index">
-		<div class = "module-actions">
-			<a href = "#brand-add" class = "btn btn-large btn-primary pull-right" data-toggle = "modal">
-				<i class="icon-plus icon-white"></i>
-				Agregar Marca 
-			</a>
-		</div>
+		@if (Auth::user()->is_admin)
+			<div class = "module-actions">
+				<a href = "#brand-add" class = "btn btn-large btn-primary pull-right" data-toggle = "modal">
+					<i class="icon-plus icon-white"></i>
+					Agregar Marca 
+				</a>
+			</div>
+		@endif
 		<div class="page-header">
 			<h1>.: Marcas</h1>
 		</div>
@@ -140,12 +142,14 @@
 										<i class="icon-tags icon-white"></i>
 										<span class="caret"></span>
 									</a>
-									<a href = "#" class = "btn btn-warning brand-edit" rel = "tooltip" title = "Editar la marca" id = "brand-edit-{{ $brand->id }}" data-loading-text="Cargando...">
-										<i class="icon-pencil icon-white"></i>
-									</a>
-									<a href = "/brands/delete/{{ $brand->id }}" class = "btn btn-danger btn-delete-brand" id = "btn-delete-brand-{{ $brand->name }}" rel = "tooltip" title = "Eliminar la marca">
-										<i class="icon-remove icon-white"></i>
-									</a>
+									@if (Auth::user()->is_admin)
+										<a href = "#" class = "btn btn-warning brand-edit" rel = "tooltip" title = "Editar la marca" id = "brand-edit-{{ $brand->id }}" data-loading-text="Cargando...">
+											<i class="icon-pencil icon-white"></i>
+										</a>
+										<a href = "/brands/delete/{{ $brand->id }}" class = "btn btn-danger btn-delete-brand" id = "btn-delete-brand-{{ $brand->name }}" rel = "tooltip" title = "Eliminar la marca">
+											<i class="icon-remove icon-white"></i>
+										</a>
+									@endif
 								</div>
 							</div>
 							<div class="row-fluid hide related-container">
