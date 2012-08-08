@@ -6,6 +6,7 @@
 
 @section('content')
 	{{--Modal para agregar marcas--}}
+	@if (Auth::user()->is_admin)
 	<div class="modal fade hide" id="brand-add">
 		<div class="form-wrapper">
 			{{ Form::open('/brands/add', 'POST', array('class' => 'form-horizontal')) }}
@@ -105,6 +106,7 @@
 			{{ Form::close() }}
 		</div>
 	</div>
+	@endif
 	{{--Markup del index de marcas--}}
 	<div class="brands-index">
 		@if (Auth::user()->is_admin)
