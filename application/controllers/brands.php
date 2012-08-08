@@ -58,21 +58,28 @@ class Brands_Controller extends Base_Controller {
 				return View::make('brands.edit', $brand);
 			}
 		} elseif (Request::method() == 'POST'){
-			$brand = Brand::find($id);
-			$brand->name = Input::get('name');
-			if ($brand->save()){
-				// Edición exitosa
-				if (Input::get('suppliers')){
-					$brand->suppliers()->sync(Input::get('suppliers'));
+			if (Auth::user()->is_admin){
+				$brand = Brand::find($id);
+				$brand->name = Input::get('name');
+				if ($brand->save()){
+					// Edición exitosa
+					if (Input::get('suppliers')){
+						$brand->suppliers()->sync(Input::get('suppliers'));
+					}
+					return Redirect::to('/brands')
+						->with('status', View::make('partials.fancy-status', array('message' => 'Edición exitosa',
+							'type' => 'success',
+						)));
+				} else {
+					// Edición fallida
+					return Redirect::to('/brands/edit/'.$id)
+						->with('status', View::make('partials.fancy-status', array('message' => 'Edición fallido',
+							'type' => 'danger',
+						)));
 				}
-				return Redirect::to('/brands')
-					->with('status', View::make('partials.fancy-status', array('message' => 'Edición exitosa',
-						'type' => 'success',
-					)));
 			} else {
-				// Edición fallida
-				return Redirect::to('/brands/edit/'.$id)
-					->with('status', View::make('partials.fancy-status', array('message' => 'Edición fallido',
+				return Redirect::to('/brands')
+					->with('status', View::make('partials.fancy-status', array('message' => 'No tienes permiso para editar marcas',
 						'type' => 'danger',
 					)));
 			}
@@ -81,33 +88,40 @@ class Brands_Controller extends Base_Controller {
 	
 	public function action_delete($id)
 	{
-		$brand = Brand::find($id);
-		if ($brand){
-			$suppliers = $brand->suppliers()->pivot()->get();
-			if (! empty($suppliers)){
-				//Tiene elementos relacionados	
-				if ($brand->suppliers()->delete()){
+		if (Auth::user()->is_admin){
+			$brand = Brand::find($id);
+			if ($brand){
+				$suppliers = $brand->suppliers()->pivot()->get();
+				if (! empty($suppliers)){
+					//Tiene elementos relacionados	
+					if ($brand->suppliers()->delete()){
+					} else {
+						return Redirect::to('/brands')
+							->with('status', View::make('partials.fancy-status', array('message' => 'Borrado de asociación de  proveedores fallido',
+								'type' => 'danger',
+							)));
+					}
+				}
+				if ($brand->delete()){
+					return Redirect::to('/brands')
+						->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación exitosa',
+							'type' => 'success',
+						)));
 				} else {
 					return Redirect::to('/brands')
-						->with('status', View::make('partials.fancy-status', array('message' => 'Borrado de asociación de  proveedores fallido',
+						->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación fallida',
 							'type' => 'danger',
 						)));
 				}
-			}
-			if ($brand->delete()){
-				return Redirect::to('/brands')
-					->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación exitosa',
-						'type' => 'success',
-					)));
 			} else {
 				return Redirect::to('/brands')
-					->with('status', View::make('partials.fancy-status', array('message' => 'Eliminación fallida',
+					->with('status', View::make('partials.fancy-status', array('message' => 'Marca no encontrada',
 						'type' => 'danger',
 					)));
 			}
 		} else {
 			return Redirect::to('/brands')
-				->with('status', View::make('partials.fancy-status', array('message' => 'Marca no encontrada',
+				->with('status', View::make('partials.fancy-status', array('message' => 'No tienes permiso para eliminar la marca',
 					'type' => 'danger',
 				)));
 		}
