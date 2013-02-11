@@ -115,7 +115,7 @@ Route::filter('auth', function()
 Route::filter('admin', function()
 {
 	if (Auth::check()){
-		if (!Auth::user()->is_admin){
+		if (!Auth::user()->is_admin or Auth::user()->is_admin < 2){
 			return Redirect::to('/credentials/index/'.Auth::user()->id)
 				->with('status', View::make('partials.fancy-status', array('message' => 'Acceso Restringido',
 					'type' => 'danger',
