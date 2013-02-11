@@ -43,6 +43,12 @@ class Suppliers_Controller extends Base_Controller {
 			$supplier->address = Input::get('address');
 			$supplier->phone   = Input::get('phone');
 			$supplier->user_id = Input::get('user_id');
+			$supplier->created_at = date('Y-m-d H:i:s');
+			if(Auth::user()->is_admin == 2){
+				$supplier->approved = 1;
+			}else{
+				$supplier->approved = 0;
+			}
 			if ($supplier->save()){
 				// Guardado con éxito
 				if (Input::get('brands')){
@@ -82,6 +88,7 @@ class Suppliers_Controller extends Base_Controller {
 			$supplier->url     = Input::get('url');
 			$supplier->address = Input::get('address');
 			$supplier->phone   = Input::get('phone');
+			$supplier->updated_at = date('Y-m-d H:i:s');
 			if ($supplier->save()){
 				// Edición exitosa
 				if (Input::get('brands')){
