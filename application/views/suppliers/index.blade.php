@@ -220,7 +220,7 @@
 										@endif
 									</dl>
 								</div>
-								<div class="span8">
+								<div class="span2">
 									<p>
 									@if ($supplier->user_id)
 										{{ $supplier->username }}
