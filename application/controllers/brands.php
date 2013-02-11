@@ -4,7 +4,10 @@ class Brands_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		$brands = Brand::with('suppliers')->order_by('name', 'ASC')->get();
+		$brands = Brand::with('suppliers')
+				->left_join('users', 'users.id', '=', 'brands.user_id')
+				->order_by('name', 'ASC')
+				->get();
 		$suppliers = Supplier::order_by('name', 'ASC')->get();
 		return View::make('brands.index', array(
 			'brands' => $brands,
@@ -25,6 +28,7 @@ class Brands_Controller extends Base_Controller {
 		} elseif (Request::method() == 'POST') {
 			$brand = new Brand;
 			$brand->name = Input::get('name');
+			$brand->user_id = Input::get('user_id');
 			if ($brand->save()){
 				// Guardado con éxito
 				if (Input::get('suppliers')){

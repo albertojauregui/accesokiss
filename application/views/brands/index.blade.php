@@ -19,6 +19,7 @@
 						<div class="span1">&nbsp;</div>	
 						<div class="span10">
 							<fieldset>
+								{{ Form::hidden('user_id', Auth::user()->id) }}
 								<div class="control-group">
 									{{ Form::label('name', 'Nombre', array('class' => 'control-label'))}}
 									<div class="controls">
