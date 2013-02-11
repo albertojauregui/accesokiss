@@ -5,7 +5,7 @@ class Credentials_Controller extends Base_Controller {
 	public function action_index($user_id)
 	{
 		$data = User::with(array('suppliers', 'suppliers.brands'))
-			->where('id', '=', $user_id)
+			->where('id', '=', Auth::user()->id)
 			->get();
 		$suppliers = Supplier::order_by('name', 'ASC')->get();
 		return View::make('credentials.index', array(
