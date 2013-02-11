@@ -117,9 +117,37 @@
 				</a>
 			</div>
 		@endif
-		<div class="page-header">
-			<h1>.: Marcas</h1>
+		{{--Cambio requerido para buscador se reemplaza el siguiente div porque ponía un borde inferior indeseado --}}
+		{{-- <div class="page-header"> --}}
+		{{--fecha 20121105 --}}
+		{{--Developer: Daniel Holguin--}}
+		
+		<div style = "padding-bottom:17px;margin:18px 0;">
+			<h1>.: Marcas y Soluciones</h1>
 		</div>
+		{{--Cambio requerido para buscador se agrega la siguiente tabla--}}
+		{{--fecha 20121105 --}}
+		{{--Developer: Daniel Holguin--}}
+		<table class = "module-actions" align= "center">
+		<tr>
+		<td>   
+			<input class = "btn-large"  id = "txt-search" placeholder = "Escriba su busqueda aqu&iacute"></input>
+		</td>			
+		</tr>
+		<tr>
+		<td style="text-align:center">								
+			<button class = "btn btn-small btn-primary" id ="btn-search" >
+				<i class="icon-search icon-white"></i>
+				Buscar
+			</button>
+			<button class = "btn btn-small btn-primary" id = "btn-clear">
+				<i class="icon-remove-circle icon-white"></i>   
+				Limpiar
+			</button>			
+		</td>	
+		</tr>
+		</table>
+		<hr>
 		<div class="brands-list">
 			<div class="row-fluid">
 				<div class="span12">
@@ -134,7 +162,10 @@
 						</div>
 					</div>
 					@forelse ($brands as $brand)
-						<div class="list-element">
+					{{--Se agrega id al Sig. div y se introduce el hr que al div, antes estaba afuera de el--}}
+					{{--Fecha: 20121106--}}
+					{{--Developer: Daniel Holguin--}}
+						<div class="list-element" Id ="brand-{{ $brand->id }}-{{ $brand->name }}">
 							<div class="row-fluid">
 								<div class = "span6">
 									{{ $brand->name }}
@@ -168,8 +199,9 @@
 									</div>
 								@endforelse
 							</div>
+							<hr> {{--Esté hr fue cambiado de padré antes fue hermano de su actual padre 20121006--}} 
+							 {{--Developer: Daniel Holguín--}}
 						</div>
-						<hr>
 					@empty
 					@endforelse
 				</div>

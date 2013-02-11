@@ -144,14 +144,39 @@
 	{{--Markup del index de proveedores--}}
 	<div class="suppliers-index">
 		<div class = "module-actions">
+		@if (Auth::user()->is_admin)
 			<a href = "#supplier-add" class = "btn btn-large btn-primary pull-right" data-toggle = "modal">
 				<i class="icon-plus icon-white"></i>
 				Agregar Proveedor
 			</a>
+		@endif
 		</div>
-		<div class="page-header">
-			<h1>.: Proveedores</h1>
-		</div>
+		<div style = "padding-bottom:17px;margin:18px 0;"> 
+			<h1>.: Proveedores, Fabricantes y Servicios</h1>
+		</div>		
+		{{--Cambio requerido para buscador se agrega la siguiente tabla--}}
+		{{--fecha 20121105 --}}
+		{{--Developer: Daniel Holguin--}}
+		<table class = "module-actions" align= "center">
+		<tr>
+		<td>   
+			<input class = "btn-large"  id = "txt-search" placeholder = "Escriba su busqueda aqu&iacute"></input>
+		</td>			
+		</tr>
+		<tr>
+		<td style="text-align:center">								
+			<button class = "btn btn-small btn-primary" id ="btn-search" >
+				<i class="icon-search icon-white"></i>
+				Buscar
+			</button>
+			<button class = "btn btn-small btn-primary" id = "btn-clear">
+				<i class="icon-remove-circle icon-white"></i>   
+				Limpiar
+			</button>			
+		</td>	
+		</tr>
+		</table>
+		<hr>			
 		<div class="suppliers-list">
 			<div class="row-fluid">
 				<div class="span12">
@@ -166,8 +191,11 @@
 						</div>
 					</div>
 					@forelse ($suppliers as $supplier)
-						<div class="list-element">
-							<div class="row-fluid">
+						{{--Se agrega id al Sig. div y se cambia el introduce el hr que al div, antes estaba afuera de el--}}
+						{{--Fecha: 20121106--}}
+						{{--Developer: Daniel Holguin--}}
+						<div class="list-element" Id ="supplier-{{ $supplier->id }}-{{ $supplier->name }}">  
+							<div class="row-fluid"> 
 								<div class="span10">
 									<dl class="dl-horizontal">
 										@if ($supplier->name)
@@ -189,19 +217,34 @@
 									</dl>
 								</div>
 								<div class="span2">
+									{{--Cambio requerido para mostrar marcas 20121101--}}
+									{{--Developer: Daniel Holguin--}}
+									<a href = "#" class = "btn btn-primary slide-related" rel = "tooltip" title = "Mostrar marcas">
+										<i class="icon-tags icon-white"></i>
+										<span class="caret"></span>
+									</a>
+									@if (Auth::user()->is_admin)
 									<a href = "#" class = "btn btn-warning supplier-edit" rel = "tooltip" title = "Editar el proveedor" id = "supplier-edit-{{ $supplier->id }}" data-loading-text="Cargando...">
 										<i class="icon-pencil icon-white"></i>
 									</a>
 									<a href = "/suppliers/delete/{{ $supplier->id }}" class = "btn btn-danger btn-delete-supplier" id = "btn-delete-supplier-{{ $supplier->name }}"  rel = "tooltip" title = "Eliminar el proveedor">
 										<i class="icon-remove icon-white"></i>
 									</a>
+									@endif
 								</div>
 							</div>
-							<div class="row-fluid hide">
-								<h3>Marcas del Proveedor</h3>
+							{{--Cambio requerido para mostrar marcas 20121101--}}
+							{{--Developer: Daniel Holguin--}}
+							<div class="row-fluid hide related-container">
+								<div class="separador">
+									&nbsp;
+								</div>
 								@forelse ($supplier->brands as $brand)
 									<div class="span3">
-										{{ $brand->name }}
+										<i class="icon-tags"></i>
+										<strong>
+											{{ $brand->name }}
+										</strong>
 									</div>
 								@empty
 									<div class="alert alert-error">
@@ -209,8 +252,9 @@
 									</div>
 								@endforelse
 							</div>
+							<hr> {{--Est� hr fue cambiado de padr� antes fue hermano de su actual padre 20121006--}} 
+								 {{--Developer: Daniel Holgu�n--}}
 						</div>
-						<hr>
 					@empty
 					@endforelse
 				</div>

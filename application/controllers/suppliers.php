@@ -2,11 +2,11 @@
 
 class Suppliers_Controller extends Base_Controller {
 
-	public function __construct()
+/*	public function __construct()
 	{
 		$this->filter('before', 'admin');
 	}
-
+*/
 	public function action_index()
 	{
 		if (Request::ajax()){

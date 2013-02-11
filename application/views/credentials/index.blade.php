@@ -111,9 +111,38 @@
 				Agregar Acceso
 			</a>
 		</div>
-		<div class="page-header">
-			<h1>.: Accesos a los Proveedores</h1>
+		{{--Cambio requerido para buscador se reemplaza el siguiente div porque ponía un borde inferior indeseado --}}
+		{{-- <div class="page-header"> --}}
+		{{--fecha 20121105 --}}
+		{{--Developer: Daniel Holguin--}}
+		
+		<div style = "padding-bottom:17px;margin:18px 0;">
+			<h1>.: Accesos a p&aacuteginas web</h1>
 		</div>
+		{{--Cambio requerido para buscador se agrega la siguiente tabla--}}
+		{{--fecha 20121105 --}}
+		{{--Developer: Daniel Holguin--}}
+		<table class = "module-actions" align= "center">
+		<tr>
+		<td>   
+			<input class = "btn-large"  id = "txt-search" placeholder = "Escriba su busqueda aqu&iacute"></input>
+		</td>			
+		</tr>
+		<tr>
+		<td style="text-align:center">								
+			<button class = "btn btn-small btn-primary" id ="btn-search" >
+				<i class="icon-search icon-white"></i>
+				Buscar
+			</button>
+			<button class = "btn btn-small btn-primary" id = "btn-clear">
+				<i class="icon-remove-circle icon-white"></i>   
+				Limpiar
+			</button>			
+		</td>	
+		</tr>
+		</table>
+		<hr>
+		
 		<div class="credentials-list">
 			<div class="row-fluid">
 				<div class="span12">
@@ -128,7 +157,10 @@
 						</div>
 					</div>
 					@forelse ($credentials[0]->suppliers as $supplier)
-						<div class="list-element">
+					{{--Se agrega id al Sig. div y se cambia el introduce el hr que al div, antes estaba afuera de el--}}
+					{{--Fecha: 20121106--}}
+					{{--Developer: Daniel Holguin--}}
+						<div class="list-element" Id ="supplier-{{ $supplier->id }}-{{$supplier->name}}">
 							<div class="row-fluid">
 								<div class="span7">
 									<dl class="dl-horizontal">
@@ -177,12 +209,14 @@
 										No encontramos ninguna marca para el proveedor
 									</div>
 								@endforelse
-							</div>
-						</div>
-						<hr>
+							</div>								
+							<hr>	{{--Esté hr fue cambiado de padré antes fue hermano de su actual padre 20121006--}} 
+									{{--Developer: Daniel Holguín--}}
+						</div>									
 					@empty
 					@endforelse
 				</div>
+						
 			</div>
 		</div>
 	</div>

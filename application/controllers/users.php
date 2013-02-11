@@ -22,7 +22,10 @@ class Users_Controller extends Base_Controller {
 				'username' => Input::get('username'),
 				'password' => Input::get('password'),
 			);
-			if (Auth::attempt($credentials)){
+			if (Auth::attempt($credentials)){				
+				$Userlogin = new Userlogin;
+				$Userlogin->user_id =  Auth::user()->id;
+				$Userlogin->save();				
 			    return Redirect::to('/credentials/index/' . Auth::user()->id);
 			} else {
 			    return Redirect::to('/')

@@ -17,7 +17,7 @@
 	<div class="container">
 		<div class="row-fluid">
 			<div class="span12">
-				<div class="btn-group menu">
+				<div class="btn-group menu">					
 					<a href="/credentials/index/{{ Auth::user()->id }}" class = "btn btn-large btn-inverse">
 						<i class="icon-lock icon-white"></i>
 						Accesos
@@ -28,12 +28,18 @@
 					</a>
 					<a href="/brands" class = "btn btn-large btn-inverse">
 						<i class="icon-tags icon-white"></i>
-						Marcas
+						Marcas y soluciones
 					</a>
 					<a href="/users" class = "btn btn-large btn-inverse">
 						<i class="icon-user icon-white"></i>
 						Usuarios
+					</a>					
+					@if (Auth::user()->is_admin)
+					<a href="/userlogins" class = "btn btn-large btn-inverse">
+						<i class="icon-eye-open icon-white"></i>
+						Monitor
 					</a>
+					@endif
 					<a href="/users/logout" class = "btn btn-large btn-danger">
 						<i class="icon-remove icon-white"></i>
 						Salir

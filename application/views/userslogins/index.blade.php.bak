@@ -1,0 +1,30 @@
+
+
+@layout('layouts.common')
+
+@section('assets')
+	@parent
+@endsection
+
+@section('content')
+	{{--Markup del index de proveedores--}}	
+		<table class = "module-actions" align= "center">
+		<tr>
+		<td>   
+			<input class = "btn-large"  id = "txt-search" placeholder = "Escriba su busqueda aqu&iacute"></input>
+		</td>			
+		</tr>
+		<tr>
+		<td style="text-align:center">								
+			<button class = "btn btn-small btn-primary" id ="btn-search" >
+				<i class="icon-search icon-white"></i>
+				Buscar
+			</button>
+			<button class = "btn btn-small btn-primary" id = "btn-clear">
+				<i class="icon-remove-circle icon-white"></i>   
+				Limpiar
+			</button>			
+		</td>	
+		</tr>
+		</table>
+@endsection
