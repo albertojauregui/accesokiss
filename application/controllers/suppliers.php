@@ -15,6 +15,7 @@ class Suppliers_Controller extends Base_Controller {
 			);
 		} else {
 			$suppliers = Supplier::with('brands')
+				->left_join('users', 'users.id', '=', 'suppliers.user_id')
 				->order_by('name', 'ASC')
 				->get();
 			$brands = Brand::order_by('name', 'ASC')->get();
@@ -41,6 +42,7 @@ class Suppliers_Controller extends Base_Controller {
 			$supplier->url     = Input::get('url');
 			$supplier->address = Input::get('address');
 			$supplier->phone   = Input::get('phone');
+			$supplier->user_id = Input::get('user_id');
 			if ($supplier->save()){
 				// Guardado con éxito
 				if (Input::get('brands')){

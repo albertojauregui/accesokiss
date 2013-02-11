@@ -18,6 +18,7 @@
 						<div class="span1">&nbsp;</div>	
 						<div class="span10">
 							<fieldset>
+								{{ Form::hidden('user_id', Auth::user()->id) }}
 								<div class="control-group">
 									{{ Form::label('name', 'Nombre del Proveedor', array('class' => 'control-label'))}}
 									<div class="controls">
@@ -182,8 +183,11 @@
 				<div class="span12">
 					<div class="list-header">
 						<div class="row-fluid">
-							<div class="span10">
+							<div class="span8">
 								&nbsp;
+							</div>
+							<div class="span2">
+								Capturado por
 							</div>
 							<div class="span2">
 								Acciones
@@ -196,7 +200,7 @@
 						{{--Developer: Daniel Holguin--}}
 						<div class="list-element" Id ="supplier-{{ $supplier->id }}-{{ $supplier->name }}">  
 							<div class="row-fluid"> 
-								<div class="span10">
+								<div class="span8">
 									<dl class="dl-horizontal">
 										@if ($supplier->name)
 											<dt>Nombre: </dt>	
@@ -215,6 +219,15 @@
 											<dd>{{ $supplier->phone }}</dd>
 										@endif
 									</dl>
+								</div>
+								<div class="span8">
+									<p>
+									@if ($supplier->user_id)
+										{{ $supplier->username }}
+									@else
+										N/A
+									@endif
+									</p>
 								</div>
 								<div class="span2">
 									{{--Cambio requerido para mostrar marcas 20121101--}}
