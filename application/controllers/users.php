@@ -121,6 +121,14 @@ class Users_Controller extends Base_Controller {
 						)));
 				}
 			}
+
+			$dbhandle = mysql_connect('localhost', 'root', '') or die("Unable to connect to MySQL");
+			mysql_select_db('accesokiss', $dbhandle);
+			$sql = "DELETE FROM userlogins WHERE user_id=".$id;
+			if (!mysql_query($sql,$dbhandle)){
+				die('Error: ' . mysql_error());
+			}
+
 			if ($user->delete()){
 				return Redirect::to('/users')
 					->with('status', View::make('partials.fancy-status', 
