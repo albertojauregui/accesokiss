@@ -29,6 +29,12 @@ class Brands_Controller extends Base_Controller {
 			$brand = new Brand;
 			$brand->name = Input::get('name');
 			$brand->user_id = Input::get('user_id');
+			$brand->created_at = date('Y-m-d H:i:s');
+			if(Auth::user()->is_admin == 2){
+				$supplier->approved = 1;
+			}else{
+				$supplier->approved = 0;
+			}
 			if ($brand->save()){
 				// Guardado con éxito
 				if (Input::get('suppliers')){
@@ -65,6 +71,12 @@ class Brands_Controller extends Base_Controller {
 			if (Auth::user()->is_admin){
 				$brand = Brand::find($id);
 				$brand->name = Input::get('name');
+				$brand->updated_at = date('Y-m-d H:i:s');
+				if(Auth::user()->is_admin == 2){
+					$supplier->approved = 1;
+				}else{
+					$supplier->approved = 0;
+				}
 				if ($brand->save()){
 					// Edición exitosa
 					if (Input::get('suppliers')){
