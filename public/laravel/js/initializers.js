@@ -84,6 +84,7 @@ $(function (){
 	});
 	
 	$('.user-edit').click(function(){
+		$("#user-edit #is_admin option").removeAttr("selected");
 		var $boton = $(this);
 		var attr_id = $(this).attr('id');
 		var values = attr_id.split('-');
@@ -98,7 +99,11 @@ $(function (){
 				.attr('action', '/users/edit/'+user.id);
 			$('#user-edit #username'). val(user.username);
 			$('#user-edit #password'). val(user.password);
-			$('#user-edit #is_admin'). attr('checked', user.is_admin);
+			if(user.is_admin > 0){
+				$("#user-edit #is_admin option[value="+user.is_admin+"]").attr("selected", true);
+			}else{
+				$("#user-edit #is_admin option[value=0]").attr("selected", true);
+			}
 			$boton.button('reset');
 			$('#user-edit').modal('show');
 		});

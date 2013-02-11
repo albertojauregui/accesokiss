@@ -79,11 +79,9 @@
 								</div>
 
 								<div class="control-group">
-									{{ Form::label('is_admin', '¿Es admin?', array('class' => 'control-label'))}}
+									{{ Form::label('is_admin', 'Perfil', array('class' => 'control-label'))}}
 									<div class="controls">
-										<label class="checkbox">
-											{{ Form::checkbox('is_admin', 1) }}
-										</label>
+										{{ Form::select('is_admin', array('2' => 'Admin', '1' => 'Semidios', 0 => 'Normal')); }}
 									</div>
 								</div>
 							</fieldset>
@@ -137,9 +135,13 @@
 									{{ $user->password }}
 								</div>
 								<div class="span3">
-									@if ($user->is_admin)
+									@if ($user->is_admin == 2)
 										<a href = "#" class = "btn btn-success">
 											<i class="icon-ok icon-white"></i>
+										</a>
+									@elseif($user->is_admin == 1)
+										<a href = "#" class = "btn btn-warning">
+											<i class="icon-check icon-white"></i>
 										</a>
 									@else
 										<a href = "#" class = "btn btn-danger">
