@@ -41,7 +41,7 @@ class Suppliers_Controller extends Base_Controller {
 			$supplier->url     = Input::get('url');
 			$supplier->address = Input::get('address');
 			$supplier->phone   = Input::get('phone');
-			$supplier->user_id = Input::get('user_id');
+			$supplier->userid = Input::get('userid');
 			$supplier->created_at = date('Y-m-d H:i:s');
 			if(Auth::user()->is_admin == 2){
 				$supplier->approved = 1;

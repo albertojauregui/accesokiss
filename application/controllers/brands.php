@@ -27,12 +27,12 @@ class Brands_Controller extends Base_Controller {
 		} elseif (Request::method() == 'POST') {
 			$brand = new Brand;
 			$brand->name = Input::get('name');
-			$brand->user_id = Input::get('user_id');
+			$brand->userid = Input::get('userid');
 			$brand->created_at = date('Y-m-d H:i:s');
 			if(Auth::user()->is_admin == 2){
-				$supplier->approved = 1;
+				$brand->approved = 1;
 			}else{
-				$supplier->approved = 0;
+				$brand->approved = 0;
 			}
 			if ($brand->save()){
 				// Guardado con éxito
