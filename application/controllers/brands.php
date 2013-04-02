@@ -5,7 +5,6 @@ class Brands_Controller extends Base_Controller {
 	public function action_index()
 	{
 		$brands = Brand::with('suppliers')
-				->left_join('users', 'users.id', '=', 'brands.user_id')
 				->order_by('name', 'ASC')
 				->get();
 		$suppliers = Supplier::order_by('name', 'ASC')->get();

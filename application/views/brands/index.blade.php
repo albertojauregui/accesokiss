@@ -154,10 +154,13 @@
 				<div class="span12">
 					<div class="list-header">
 						<div class="row-fluid">
-							<div class="span6">
+							<div class="span8">
 								Nombre
 							</div>
-							<div class="span6">
+							<div class="span2">
+								Capturado por
+							</div>
+							<div class="span2">
 								Acciones
 							</div>
 						</div>
@@ -168,10 +171,22 @@
 					{{--Developer: Daniel Holguin--}}
 						<div class="list-element" Id ="brand-{{ $brand->id }}-{{ $brand->name }}">
 							<div class="row-fluid">
-								<div class = "span6">
+								<div class = "span8">
 									{{ $brand->name }}
 								</div>
-								<div class = "span6">
+								<div class="span2">
+									<p>
+									<?php 
+										$dbhandle = mysql_connect('localhost', 'root', '') or die("Unable to connect to MySQL");
+										mysql_select_db('accesokiss', $dbhandle);
+										$sql = "SELECT username FROM users WHERE id=".$brand->userid;
+										$username = mysql_query($sql, $dbhandle);
+										$row = mysql_fetch_row($username);
+										echo $row[0];
+									?>
+									</p>
+								</div>
+								<div class = "span2">
 									<a href = "#" class = "btn btn-primary slide-related" rel = "tooltip" title = "Mostrar proveedores">
 										<i class="icon-tags icon-white"></i>
 										<span class="caret"></span>
