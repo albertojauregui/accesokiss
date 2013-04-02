@@ -15,8 +15,7 @@ class Suppliers_Controller extends Base_Controller {
 			);
 		} else {
 			$suppliers = Supplier::with('brands')
-				->left_join('users', 'users.id', '=', 'suppliers.user_id')
-				->order_by('name', 'ASC')
+				->order_by('suppliers.name', 'ASC')
 				->get();
 			$brands = Brand::order_by('name', 'ASC')->get();
 			return View::make('suppliers.index', array(
