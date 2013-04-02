@@ -35,9 +35,7 @@
 								<div class="control-group">
 									{{ Form::label('is_admin', '¿Es admin?', array('class' => 'control-label'))}}
 									<div class="controls">
-										<label class="checkbox">
-											{{ Form::checkbox('is_admin', 1) }}
-										</label>
+										{{ Form::select('is_admin', array('2' => 'Admin', '1' => 'Semidios', 0 => 'Normal')); }}
 									</div>
 								</div>
 							</fieldset>
