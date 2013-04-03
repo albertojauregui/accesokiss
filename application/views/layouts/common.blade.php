@@ -28,7 +28,7 @@
 					</a>
 					<a href="/brands" class = "btn btn-large btn-inverse">
 						<i class="icon-tags icon-white"></i>
-						Marcas y soluciones
+						Marcas soluciones
 					</a>
 					<a href="/users" class = "btn btn-large btn-inverse">
 						<i class="icon-user icon-white"></i>
@@ -38,6 +38,10 @@
 					<a href="/userlogins" class = "btn btn-large btn-inverse">
 						<i class="icon-eye-open icon-white"></i>
 						Monitor
+					</a>
+					<a href="/authorizations" class="btn btn-large btn-inverse">
+						<i class="icon-wrench icon-white"></i>
+						Autorizaciones
 					</a>
 					@endif
 					<a href="/users/logout" class = "btn btn-large btn-danger">
